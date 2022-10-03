@@ -23,6 +23,8 @@
 #include "bsSkinMenus.hpp"
 #include "bsPngImageList.hpp"
 #include "bsColorCtrls.hpp"
+#include "bsSkinHint.hpp"
+#include "bsSkinExCtrls.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -47,22 +49,30 @@ __published:	// IDE-managed Components
 	TbsSkinPanel *Panel_shellcombo;
 	TJamShellBreadCrumbBar *JamShellBreadCrumbBar1;
 	TJamShellCombo *JamShellCombo1;
-	TImageList *ImageList1;
-	TbsSkinButton *bsSkinButton1;
+	TImageList *ToolBarImageList;
+	TbsSkinButton *Message;
 	TbsSkinMessage *bsSkinMessage1;
 	TbsSkinToolBar *ToolBar;
 	TbsSkinSpeedButton *MoveBackButton;
 	TbsSkinSpeedButton *MoveForwardButton;
 	TbsSkinSplitter *bsSkinSplitter3;
-	TbsSkinSpeedButton *bsSkinSpeedButton1;
-	TbsSkinBevel *bsSkinBevel1;
-	TbsSkinSpeedButton *bsSkinSpeedButton2;
-	TbsSkinSpeedButton *bsSkinSpeedButton3;
-	void __fastcall bsSkinButton1Click(TObject *Sender);
+	TbsSkinSpeedButton *ParentButton;
+	TbsSkinSpeedButton *NewFolderButton;
+	TbsSkinSpeedButton *DeleteButton;
+	TbsSkinSpeedButton *PropertiesButton;
+	TbsSkinDivider *bsSkinDivider1;
+	TbsSkinSpeedButton *LargeIconsButton;
+	TbsSkinSpeedButton *ListButton;
+	TbsSkinSpeedButton *ReportButton;
+	TbsSkinStatusBar *StatusBar;
+	TbsSkinSpeedButton *ThumbnailsButton;
+	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
+	void __fastcall DisplayHint(TObject *Sender);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

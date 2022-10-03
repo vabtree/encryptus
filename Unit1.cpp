@@ -17,6 +17,8 @@
 #pragma link "bsSkinMenus"
 #pragma link "bsPngImageList"
 #pragma link "bsColorCtrls"
+#pragma link "bsSkinHint"
+#pragma link "bsSkinExCtrls"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -27,7 +29,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::bsSkinButton1Click(TObject *Sender)
+void __fastcall TForm1::MessageClick(TObject *Sender)
 {
 		//bsSkinMessage1.MessageDlg('wey',mtConfirmation,mbOKCancel,0);
 
@@ -42,3 +44,12 @@ void __fastcall TForm1::MoveBackButtonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::DisplayHint(TObject *Sender)
+{
+	   // StatusBar->Hint = GetLongHint(Application->Hint);
+	   StatusBar->HintTitle = GetLongHint(Application->Hint);
+}
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+	Application->OnHint = DisplayHint;
+}
