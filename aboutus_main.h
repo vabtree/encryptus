@@ -17,13 +17,9 @@
 class TAboutus : public TForm
 {
 __published:	// IDE-managed Components
-	TseAnimationForm *seAnimationForm1;
-	TseAnimationList *seAnimationList1;
-	TbsBusinessSkinForm *bsBusinessSkinForm1;
+	TbsBusinessSkinForm *BusinessSkinFormAboutUs;
 	TbsPngImageView *bsPngImageView1;
 	TbsPngImageStorage *bsPngImageStorage1;
-	TseAnimation *seAnimation1;
-	void __fastcall FormClick(TObject *Sender);
 	void __fastcall bsPngImageView1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

@@ -35,6 +35,7 @@
 #include "aboutus_main.h"
 #include "ipcezcrypt.h"
 #include "ipzzip.h"
+#include "bsDialogs.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -99,7 +100,6 @@ __published:	// IDE-managed Components
 	TMenuItem *Contents1;
 	TMenuItem *About1;
 	TbsBusinessSkinForm *BusinessSkinForm;
-	TbsCompressedStoredSkin *CompressedSkin;
 	TbsSkinData *SkinData;
 	TbsSkinSpeedButton *ThemeButton;
 	TbsSkinSplitter *bsSkinSplitter2;
@@ -127,6 +127,14 @@ __published:	// IDE-managed Components
 	TbsSkinComboBox *comboboxAlgorithms;
 	TbsSkinButton *Decrypt;
 	TipzZip *Zip1;
+	TbsSkinButton *Reset;
+	TbsCompressedSkinList *CompressedSkinList;
+	TbsSelectSkinDialog *SelectSkinDialog;
+	TMenuItem *InactiveEffect;
+	TMenuItem *Blur;
+	TMenuItem *N1;
+	TMenuItem *SemiTransparent;
+	TMenuItem *NoEffect;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -161,7 +169,11 @@ __published:	// IDE-managed Components
 	void __fastcall buttonEnable();
 	void __fastcall comboboxAlgorithmsChange(TObject *Sender);
 	void __fastcall CryptoProgress(TObject *Sender, TipcEzCryptProgressEventParams *e);
+	int __fastcall allProgressUpdate(int value);
 	void __fastcall Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e);
+	void __fastcall DecryptClick(TObject *Sender);
+	void __fastcall ResetClick(TObject *Sender);
+	void __fastcall ThemeButtonClick(TObject *Sender);
 
 
 

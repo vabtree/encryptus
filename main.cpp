@@ -29,6 +29,7 @@
 #pragma link "se_pngimagelist"
 #pragma link "ipcezcrypt"
 #pragma link "ipzzip"
+#pragma link "bsDialogs"
 #pragma resource "*.dfm"
 #include "encrypt.h"
 
@@ -45,6 +46,7 @@ UnicodeString Key = "";
 UnicodeString VerifyKey = "";
 UnicodeString totalcountmsg = "total count: ";
 
+int current_skin_val = 0;
 int totalfilecount = 0;
 int totalfoldercount = 0;
 int countofitem = 0;
@@ -277,7 +279,6 @@ void __fastcall TForm1::TotalItemsClick(TObject *Sender)
 void __fastcall TForm1::EncryptClick(TObject *Sender)
 {
 		int compare = CompareStr(Key, VerifyKey);     // checking up the keys
-
 		if((algorithmSet == false) && ((passwordKey->Text.IsEmpty() == true) ||(passwordVerifyKey->Text.IsEmpty() == true)))
 		msg->MessageDlg("Encryptus cannot continue.\nPlease select algorithm and fill in some keys to go.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
 		else if(algorithmSet == false)
@@ -287,7 +288,11 @@ void __fastcall TForm1::EncryptClick(TObject *Sender)
 		else if(compare!=0)
 		msg->MessageDlg("Keys mismatch.\nPlease provide them again.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
 		else
-        Form2->ShowModal();
+{		ENCRYPT_COMP = true;
+		Initialized = false;
+		Form2->Caption = "Encrypting";
+		Form2->ShowModal();
+}
 }
 //---------------------------------------------------------------------------
 System::UnicodeString __fastcall TForm1::GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension){
@@ -301,10 +306,30 @@ System::UnicodeString __fastcall TForm1::RemoveFileExtension(UnicodeString Input
 	UnicodeString copy_InputFile = InputFileName;
 	index = (InputFileName.Pos(Extension));
 	if(index == 0)
-	return InputFileName;  // file.Extension does not exist
+	return InputFileName;  					// file.Extension does not exist
 	else
 	return (copy_InputFile.Delete(index,lengthExtension));
 }
+void __fastcall TForm1::DecryptClick(TObject *Sender)
+{
+		int compare = CompareStr(Key, VerifyKey);     // checking up the keys
+		if((algorithmSet == false) && ((passwordKey->Text.IsEmpty() == true) ||(passwordVerifyKey->Text.IsEmpty() == true)))
+		msg->MessageDlg("Encryptus cannot continue.\nPlease select algorithm and fill in some keys for decryption.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else if(algorithmSet == false)
+		msg->MessageDlg("Please select the appropriate algorithm.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else if((passwordKey->Text.IsEmpty() == true) || (passwordVerifyKey->Text.IsEmpty() == true))
+		msg->MessageDlg("Cheating huh.\'\nPlease fill in some keys to go.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else if(compare!=0)
+		msg->MessageDlg("Keys mismatch.\nPlease provide them again.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else
+{		ENCRYPT_COMP = false;
+		Initialized = false;
+		Form2->Caption = "Decrypting";
+		Form2->ShowModal();
+}
+}
+
+
 void __fastcall TForm1::FormActivate(TObject *Sender)
 {
 		itms = JamFileList1->Items;
@@ -357,20 +382,49 @@ void __fastcall TForm1::CryptoProgress(TObject *Sender, TipcEzCryptProgressEvent
 
 {
 		Form2->Progress->Value = e->PercentProcessed;
+		allProgressUpdate(Form2->Progress->Value);
 		Form2->Progress->Update();
-		Form2->allProgress->Value = (e->PercentProcessed)/totalfilecount;
-		Form2->allProgress->Update();
-
-
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e)
 {
 		Form2->Progress->Value = e->PercentProcessed;
+		allProgressUpdate(Form2->Progress->Value);
 		Form2->Progress->Update();
-		Form2->allProgress->Value = e->PercentProcessed;
-		Form2->allProgress->Update();
+
 }
 //---------------------------------------------------------------------------
+int __fastcall TForm1::allProgressUpdate(int value){
+
+	Form2->allProgress->Value = Form2->allProgress->Value + value;
+	Form2->allProgress->Update();
+	return 0;
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ResetClick(TObject *Sender)
+{
+		comboboxAlgorithms->ItemIndex = -1;
+		buttonDisable();
+		JamFileList1->Clear();
+		passwordVerifyKey->Text = "";
+		passwordKey->Text = "";
+		Form2->Memo->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ThemeButtonClick(TObject *Sender)
+{
+		if(SelectSkinDialog->Execute(current_skin_val) == true)    // index = 0
+	   {
+		current_skin_val = SelectSkinDialog->SelectedSkinIndex;
+		SkinData->SkinIndex = current_skin_val;
+		BusinessSkinForm->SkinData = SkinData;
+       }
+
+}
+//---------------------------------------------------------------------------
+
 

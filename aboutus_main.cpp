@@ -19,15 +19,17 @@ __fastcall TAboutus::TAboutus(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TAboutus::FormClick(TObject *Sender)
-{
-		Close();
-}
+
 //---------------------------------------------------------------------------
+
 
 void __fastcall TAboutus::bsPngImageView1Click(TObject *Sender)
 {
-        Close();
+
+		Aboutus->Close();
 }
 //---------------------------------------------------------------------------
+
+
+
 

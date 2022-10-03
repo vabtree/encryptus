@@ -15,31 +15,32 @@
 #include <sys/stat.h>
 #include <iostream>
 //---------------------------------------------------------------------------
+extern bool Initialized;
+
+
 class TForm2 : public TForm
 {
 __published:	// IDE-managed Components
 	TbsBusinessSkinForm *BusinessSkinFormEncrypt;
-	TbsSkinMemo *Memo;
-	TbsSkinPanel *bsSkinPanel1;
-	TbsSkinGauge *Progress;
-	TbsSkinSplitter *bsSkinSplitter1;
-	TbsSkinGauge *allProgress;
 	TbsSkinMessage *Message;
-	TbsSkinButton *Close__;
 	TTimer *Timer1;
-	TButton *Button1;
-	TButton *Button2;
 	TTimer *Timer2;
+	TbsSkinPanel *bsSkinPanel1;
+	TbsSkinSplitter *bsSkinSplitter1;
+	TbsSkinMemo *Memo;
+	TbsSkinGauge *Progress;
+	TbsSkinGauge *allProgress;
+	TbsSkinButton *Close__;
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall Close__Click(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
 	int __fastcall __appendline();
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall totalfilefoldercountClear();
-	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall progressBarAnimation();
+	void __fastcall Timer2Timer(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm2(TComponent* Owner);
