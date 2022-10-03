@@ -644,8 +644,6 @@ object Form1: TForm1
       Spacing = 2
       Caption = 'Panel_controls'
       Align = alBottom
-      ExplicitLeft = -79
-      ExplicitTop = 314
       object Panel_thumbnail: TbsSkinPanel
         Left = 1
         Top = 1
@@ -792,7 +790,6 @@ object Form1: TForm1
       Font.Style = []
       TabOrder = 1
       Text = 'JamShellCombo1'
-      ExplicitTop = -3
     end
   end
   object MainMenuBar: TbsSkinMainMenuBar
@@ -832,7 +829,7 @@ object Form1: TForm1
     Left = 361
     Top = 469
     Bitmap = {
-      494C01010A009C0084011E001E00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A009C0088011E001E00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000780000005A0000000100200000000000C0A8
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2339,13 +2336,13 @@ object Form1: TForm1
     Magnetic = False
     MagneticSize = 5
     BorderIcons = [biSystemMenu, biMinimize, biMaximize, biRollUp]
-    Left = 600
-    Top = 488
+    Left = 608
+    Top = 480
   end
   object CompressedSkin: TbsCompressedStoredSkin
     CompressedFileName = 'Win10ModernSlateGray.skn'
-    Left = 577
-    Top = 537
+    Left = 601
+    Top = 529
     CompressedData = {
       78DAEDDD7B9024E759E7FB91618D65218364072BEC65D93097D0DA6DBBEED525
       D3E7802C7C936429E40BBE8071CF4C4BD3786E9AE919C996ADC3E1E2B38205B3
@@ -3171,7 +3168,7 @@ object Form1: TForm1
     SkinIndex = 0
     ChangeSystemColors = False
     SystemColorHooks = [bsschHighLight]
-    Left = 505
-    Top = 497
+    Left = 521
+    Top = 505
   end
 end

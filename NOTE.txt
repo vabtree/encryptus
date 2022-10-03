@@ -1,3 +1,2 @@
-
-- Unnecessary status bar added.
-- added icons.
+- total changes.
+- toolbar icons order changed.
