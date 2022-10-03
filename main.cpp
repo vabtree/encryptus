@@ -30,6 +30,7 @@
 #pragma link "ipcezcrypt"
 #pragma link "ipzzip"
 #pragma link "bsDialogs"
+#pragma link "ipzzcompress"
 #pragma resource "*.dfm"
 #include "encrypt.h"
 
@@ -45,14 +46,15 @@ UnicodeString EmptyString = "";
 UnicodeString Key = "";
 UnicodeString VerifyKey = "";
 UnicodeString totalcountmsg = "total count: ";
+UnicodeString Extension = "";
 
+int ProgressValue_Previous = 0;
 int current_skin_val = 0;
 int totalfilecount = 0;
 int totalfoldercount = 0;
 int countofitem = 0;
 int algo_type;							// a counter in long run
 
-static int saveAllProgressBar = 0;
 
 bool crossCheck = false;
 bool compressionSet = false;
@@ -310,6 +312,24 @@ System::UnicodeString __fastcall TForm1::RemoveFileExtension(UnicodeString Input
 	else
 	return (copy_InputFile.Delete(index,lengthExtension));
 }
+
+System::UnicodeString __fastcall TForm1::GetExtension(UnicodeString InputFile, int indexInJamList){
+   unsigned int lengthOfInputFile = InputFile.Length();
+   unsigned int elmsize = InputFile.ElementSize();
+   UnicodeString Extension;											// Memo->Lines->Add(elmsize);
+   Extension = InputFile.LastChar()-3;
+return Extension;
+}
+
+System::UnicodeString __fastcall TForm1::FindPath(UnicodeString InputFile){
+  int delimiter_index = InputFile.LastDelimiter("\\");
+  String actualPath;
+  if(InputFile.IsDelimiter("\\", delimiter_index)){        // just to be sure
+	actualPath = InputFile.SubString(0,delimiter_index);
+  }
+return actualPath;
+}
+
 void __fastcall TForm1::DecryptClick(TObject *Sender)
 {
 		int compare = CompareStr(Key, VerifyKey);     // checking up the keys
@@ -382,27 +402,18 @@ void __fastcall TForm1::CryptoProgress(TObject *Sender, TipcEzCryptProgressEvent
 
 {
 		Form2->Progress->Value = e->PercentProcessed;
-		allProgressUpdate(Form2->Progress->Value);
 		Form2->Progress->Update();
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e)
 {
 		Form2->Progress->Value = e->PercentProcessed;
-		allProgressUpdate(Form2->Progress->Value);
 		Form2->Progress->Update();
-
 }
 //---------------------------------------------------------------------------
-int __fastcall TForm1::allProgressUpdate(int value){
 
-	Form2->allProgress->Value = Form2->allProgress->Value + value;
-	Form2->allProgress->Update();
-	return 0;
-}
-
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::ResetClick(TObject *Sender)
 {
@@ -426,5 +437,6 @@ void __fastcall TForm1::ThemeButtonClick(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 
 

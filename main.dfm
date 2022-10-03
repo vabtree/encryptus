@@ -653,7 +653,6 @@ object Form1: TForm1
       Top = 1
       Width = 1154
       Height = 292
-      AutomaticRefresh = False
       Filter = '*'
       SpecialFolder = SF_DESKTOP
       ShellLink = JamShellLink1
@@ -751,7 +750,7 @@ object Form1: TForm1
         Caption = 'bsSkinPanel2'
         Align = alClient
         object bsSkinTextLabel1: TbsSkinTextLabel
-          Left = 216
+          Left = 261
           Top = 11
           Width = 22
           Height = 13
@@ -767,7 +766,7 @@ object Form1: TForm1
           SkinDataName = 'stdlabel'
         end
         object bsSkinTextLabel2: TbsSkinTextLabel
-          Left = 185
+          Left = 230
           Top = 44
           Width = 53
           Height = 13
@@ -783,7 +782,7 @@ object Form1: TForm1
           SkinDataName = 'stdlabel'
         end
         object PngButtonVerifyKey: TsePngXButton
-          Left = 452
+          Left = 502
           Top = 41
           Width = 24
           Height = 24
@@ -796,8 +795,8 @@ object Form1: TForm1
           ActiveFontColor = clBlack
         end
         object btnCompress: TsePngXButton
-          Left = 548
-          Top = 10
+          Left = 541
+          Top = 8
           Width = 85
           Height = 35
           Cursor = crHandPoint
@@ -810,10 +809,17 @@ object Form1: TForm1
           ActiveFontColor = clBlack
           OnClick = btnCompressClick
         end
+        object Compression: TLabel
+          Left = 554
+          Top = 49
+          Width = 61
+          Height = 13
+          Caption = 'Compression'
+        end
         object passwordKey: TbsSkinPasswordEdit
-          Left = 245
+          Left = 290
           Top = 8
-          Width = 201
+          Width = 207
           Height = 21
           Cursor = crIBeam
           HintImageIndex = 1
@@ -834,9 +840,9 @@ object Form1: TForm1
           OnChange = passwordKeyChange
         end
         object passwordVerifyKey: TbsSkinPasswordEdit
-          Left = 245
+          Left = 290
           Top = 42
-          Width = 201
+          Width = 207
           Height = 21
           Cursor = crIBeam
           HintImageIndex = 0
@@ -857,7 +863,7 @@ object Form1: TForm1
           OnChange = passwordVerifyKeyChange
         end
         object ClearFileList: TbsSkinButton
-          Left = 9
+          Left = 17
           Top = 84
           Width = 75
           Height = 30
@@ -893,7 +899,7 @@ object Form1: TForm1
           OnClick = ClearFileListClick
         end
         object ClearSelectedFile: TbsSkinButton
-          Left = 9
+          Left = 17
           Top = 128
           Width = 95
           Height = 30
@@ -929,7 +935,7 @@ object Form1: TForm1
           OnClick = ClearSelectedFileClick
         end
         object TotalItems: TbsSkinButton
-          Left = 9
+          Left = 17
           Top = 40
           Width = 75
           Height = 30
@@ -964,7 +970,7 @@ object Form1: TForm1
           OnClick = TotalItemsClick
         end
         object Encrypt: TbsSkinButton
-          Left = 245
+          Left = 290
           Top = 84
           Width = 108
           Height = 37
@@ -1001,7 +1007,7 @@ object Form1: TForm1
           OnClick = EncryptClick
         end
         object comboboxAlgorithms: TbsSkinComboBox
-          Left = 9
+          Left = 17
           Top = 8
           Width = 176
           Height = 22
@@ -1061,7 +1067,7 @@ object Form1: TForm1
           OnChange = comboboxAlgorithmsChange
         end
         object Decrypt: TbsSkinButton
-          Left = 373
+          Left = 418
           Top = 85
           Width = 108
           Height = 36
@@ -1099,7 +1105,7 @@ object Form1: TForm1
         end
         object Reset: TbsSkinButton
           Left = 525
-          Top = 133
+          Top = 142
           Width = 108
           Height = 36
           Cursor = crHandPoint
@@ -1157,7 +1163,6 @@ object Form1: TForm1
         AllowDuplicates = False
         CheckIfExists = True
         ShellLink = JamShellLink1
-        AutomaticRefresh = False
         AutoSizeColumn = 1
       end
     end
@@ -1213,7 +1218,6 @@ object Form1: TForm1
       Top = 1
       Width = 1333
       Height = 24
-      AutomaticRefresh = False
       ShellLink = JamShellLink1
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -1264,7 +1268,7 @@ object Form1: TForm1
     Left = 753
     Top = 13
     Bitmap = {
-      494C01010B00AC00240220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B00AC00380220002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000FDFDFD02FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFB
@@ -3131,7 +3135,7 @@ object Form1: TForm1
     Left = 1120
     Top = 336
     Bitmap = {
-      494C010103000800700018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800840018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000001800000001002000000000000024
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -3802,7 +3806,7 @@ object Form1: TForm1
     Left = 1272
     Top = 338
     Bitmap = {
-      494C010102003000380055002300FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020030004C0055002300FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000054010000230000000100200000000000F0B9
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -5418,10 +5422,10 @@ object Form1: TForm1
       end>
     PngWidth = 24
     PngHeight = 24
-    Left = 888
-    Top = 488
+    Left = 840
+    Top = 304
     Bitmap = {
-      494C010102000800340018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000800480018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000001800000001002000000000000024
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -5729,12 +5733,7 @@ object Form1: TForm1
     Overwrite = True
     OnProgress = CryptoProgress
     Left = 1235
-    Top = 454
-  end
-  object Zip1: TipzZip
-    OnProgress = Zip1Progress
-    Left = 1267
-    Top = 454
+    Top = 478
   end
   object CompressedSkinList: TbsCompressedSkinList
     Skins = <
@@ -18790,5 +18789,10 @@ object Form1: TForm1
     Title = 'Select skin'
     Left = 1160
     Top = 232
+  end
+  object Zip1: TipzZip
+    OnProgress = Zip1Progress
+    Left = 1275
+    Top = 478
   end
 end

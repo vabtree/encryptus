@@ -29,7 +29,6 @@ __published:	// IDE-managed Components
 	TbsSkinSplitter *bsSkinSplitter1;
 	TbsSkinMemo *Memo;
 	TbsSkinGauge *Progress;
-	TbsSkinGauge *allProgress;
 	TbsSkinButton *Close__;
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall Close__Click(TObject *Sender);
@@ -40,6 +39,8 @@ __published:	// IDE-managed Components
 	void __fastcall progressBarAnimation();
 	void __fastcall Timer2Timer(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
+	int __fastcall CompressFileZip(UnicodeString tempFile);
+	int __fastcall DecompressFileZip(UnicodeString tempFile);
 
 private:	// User declarations
 public:		// User declarations

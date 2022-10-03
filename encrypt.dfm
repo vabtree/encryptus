@@ -98,7 +98,7 @@ object Form2: TForm2
     object Progress: TbsSkinGauge
       AlignWithMargins = True
       Left = 4
-      Top = 332
+      Top = 358
       Width = 686
       Height = 20
       Margins.Bottom = 5
@@ -123,34 +123,7 @@ object Form2: TForm2
       Vertical = False
       ProgressAnimationPause = 500
       Align = alBottom
-    end
-    object allProgress: TbsSkinGauge
-      AlignWithMargins = True
-      Left = 4
-      Top = 360
-      Width = 686
-      Height = 20
-      HintImageIndex = 0
-      TabOrder = 2
-      SkinData = Form1.SkinData
-      SkinDataName = 'gauge'
-      DefaultFont.Charset = DEFAULT_CHARSET
-      DefaultFont.Color = clWindowText
-      DefaultFont.Height = 13
-      DefaultFont.Name = 'Tahoma'
-      DefaultFont.Style = []
-      DefaultWidth = 0
-      DefaultHeight = 0
-      UseSkinFont = True
-      UseSkinSize = True
-      ShowProgressText = False
-      ShowPercent = True
-      MinValue = 0
-      MaxValue = 100
-      Value = 0
-      Vertical = False
-      ProgressAnimationPause = 1000
-      Align = alBottom
+      ExplicitTop = 332
     end
     object Close__: TbsSkinButton
       Left = 575
@@ -158,7 +131,7 @@ object Form2: TForm2
       Width = 83
       Height = 33
       HintImageIndex = 0
-      TabOrder = 3
+      TabOrder = 2
       SkinData = Form1.SkinData
       SkinDataName = 'resizebutton'
       DefaultFont.Charset = DEFAULT_CHARSET

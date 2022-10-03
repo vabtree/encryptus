@@ -30,13 +30,11 @@ return  (Memo->Text.Length()-1);
 void __fastcall TForm2::progressBarAnimation(){
 		if(fanimation == false){
 			Progress->StartProgressAnimation();
-			allProgress->StartProgressAnimation();
 			fanimation = true;
 		}
 		else if(fanimation == true)
 		{
 			Progress->StopProgressAnimation();
-			allProgress->StartProgressAnimation();
 			fanimation = false;
 		}
 }
@@ -113,19 +111,6 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 		Memo->SelText = totalfoldercount;
 
 
-	if((compressionSet == true) && (compressionEvaluated == false))
-	{
-		 compressionEvaluated = true;
-		 Progress->MaxValue = Progress->MaxValue * 2;
-		 allProgress->MaxValue = allProgress->MaxValue * 2;   // jitter at moment
-//		 Memo->Lines->Add(Progress->MaxValue);
-//		 Memo->Lines->Add(allProgress->MaxValue);
-	}
-	if( allProgressEvaluated == false ){
-		 allProgressEvaluated = true;
-		 allProgress->MaxValue = 100 * totalfilecount;     // lock allprogress for re-computation
-	}
-//	Memo->Lines->Add(allProgress->MaxValue);                           // looks fine
 // encryption Phase
 
 		countofitem = itms->Count;
@@ -162,7 +147,7 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 					  Form1->Crypto->OutputFile = Form1->GetFileNameExtension(filenameitem,".enc");
 					  temp_output_archive =  Form1->Crypto->OutputFile ;             //
 					  Form1->Crypto->KeyPassword = Form1->passwordKey->Text;
-					  Progress->StartProgressAnimation();
+				   //	  Progress->StartProgressAnimation();
 					  progressBarAnimation();
 					  Form1->Crypto->Encrypt();
 					  Memo->SelText = " ->Encrypted.";
@@ -173,13 +158,9 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 					}
  				   if(compressionSet == true )
 				   {
-						    Memo->Lines->Add("Now compresing file: ");
-							Form1->Zip1->Reset();
-							Form1->Zip1->ArchiveFile = Form1->GetFileNameExtension(temp_output_archive,".zip");
-                            Memo->SelStart = __appendline();
-							Memo->SelText = temp_output_archive;
-							Form1->Zip1->Compress();
-							Memo->SelText = " compressed";
+
+					  CompressFileZip(temp_output_archive);
+
 				   }
 
 				   }
@@ -198,48 +179,15 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 	Memo->SelText = " second.";
 
 	Progress->StopProgressAnimation();
-	allProgress->StopProgressAnimation();
 	Timer1->Enabled = false;
-}        // for loop
-
-		 // Close();     					// for closing if algo_type not selected
-
-//		for (int i = 0; i < countofitem; i++) {
-//		itm = itms->Item[i];                      // grab index
-//		String filenameitem = itm->Path;
-//	  //	Memo->Lines->Add(filenameitem + i);
-//
-//		char *txt = AnsiString(filenameitem).c_str();
-//		struct stat buf;
-//
-//		if( stat(txt,&buf) == 0 )
-//		{
-//			if( buf.st_mode & S_IFDIR )
-//			{
-//				Memo->Lines->Add("got a folder: " + filenameitem);
-//			}
-//			else if( buf.st_mode & S_IFREG )
-//			{
-//				 Memo->Lines->Add("found file: " + filenameitem);
-//			}
-//}
-//}
-
-		//Memo->Lines->Add(filenameitem); 			temporary off
-
-//		Timer->Enabled = false;                    // timer disable
-		//		String filenameitem = itm->FileSize;     // gettting the filesize at index = 0
-		   //
-		//ShowMessage(filenameitem);
-
+}
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForm2::FormClose(TObject *Sender, TCloseAction &Action)
 {
-		allProgressEvaluated = false;
+		compressionEvaluated = false;             // can be done on ResetClick
 		compressionEvaluated = false;
-		allProgress->MaxValue = 100;
 		totalfilefoldercountClear();
 		Timer1->Interval = 500;            // both timer cleared.
 		Timer2->Interval = 500;
@@ -311,29 +259,65 @@ void __fastcall TForm2::Timer2Timer(TObject *Sender)    // DECRYPTION PROCEDURE
 				}
 				else if( buf.st_mode & S_IFREG )
 				{
+					Extension = Form1->GetExtension(filenameitem, 0);
+					if(Extension == ".enc")
+					{
+						Form1->Crypto->Algorithm = (TipcEzCryptAlgorithms)algo_type;
+						Memo->Lines->Add("File: ");
+						Memo->SelStart = __appendline();
+						Memo->SelText = filenameitem;
 
-					Form1->Crypto->Algorithm = (TipcEzCryptAlgorithms)algo_type;
-					Memo->Lines->Add("File: ");
-					Memo->SelStart = __appendline();
-					Memo->SelText = filenameitem;
+					  try{
+						  Form1->Crypto->Overwrite = true;
+						  Form1->Crypto->InputFile = filenameitem;
+						  Form1->Crypto->OutputFile = Form1->RemoveFileExtension(filenameitem, ".enc");
+						  Form1->Crypto->KeyPassword = Form1->passwordKey->Text;
+						  progressBarAnimation();
+						  Form1->Crypto->Decrypt();
+						  Memo->SelText = "->Decrypted.";      // works fine for
 
-				  try{
-					  Form1->Crypto->Overwrite = true;
-					  Form1->Crypto->InputFile = filenameitem;
-					  Form1->Crypto->OutputFile = Form1->RemoveFileExtension(filenameitem, ".enc");
-					  Form1->Crypto->KeyPassword = Form1->passwordKey->Text;
-					  Progress->StartProgressAnimation();
-					  progressBarAnimation();
-					  Form1->Crypto->Decrypt();
-					  Memo->SelText = "->Decrypted.";      // works fine for
+					  } catch (Exception &ipcex) {
+					 //	  Application->ShowException(&ipcex);
+						}
+					}
+				else if(Extension == ".zip")       // file needed to be decompressed
+					{
+					  Memo->Lines->Add("File: ");
+					  Memo->SelStart = __appendline();
+					  Memo->SelText = filenameitem;
+					  Memo->Lines->Add("Found extension: ");
+					  Memo->SelStart = __appendline();
+					  Memo->SelText =  Extension;
+					  Memo->SelStart = __appendline();
+					  Memo->SelText = " to be decompressed..";
 
+					  DecompressFileZip(filenameitem);
+
+					  UnicodeString tempFile__AFTER_EXTRACTION = Form1->RemoveFileExtension(filenameitem, ".zip");
+					  UnicodeString temp__Extension = Form1->GetExtension(tempFile__AFTER_EXTRACTION,0);
+
+
+					  if(temp__Extension == ".enc")
+					  {
+						  try
+							{
+							  Form1->Crypto->Overwrite = true;
+							  Form1->Crypto->InputFile = tempFile__AFTER_EXTRACTION;
+							  Form1->Crypto->OutputFile = Form1->RemoveFileExtension(tempFile__AFTER_EXTRACTION, ".enc");
+							  Form1->Crypto->KeyPassword = Form1->passwordKey->Text;
+							  progressBarAnimation();
+							  Form1->Crypto->Decrypt();
+							  Memo->SelText = "->Decrypted.";      // works fine for
+							}
+							catch (Exception &ipcex) {
+					 //	  Application->ShowException(&ipcex);
 				  }
-					catch (Exception &ipcex) {
-					  Application->ShowException(&ipcex);
-				  }
-			}
-				}
-			}
+		 	}
+
+		}    // if zip
+	}	   // if file
+}        // if folder or file
+}      // for loop
 	int DiffOnFormActivateTickStart = GetTickCount() - OnFormActivateTickStart;
 	Memo->Lines->Add("");
 	Memo->Lines->Add("Process Completed in: ");
@@ -345,9 +329,7 @@ void __fastcall TForm2::Timer2Timer(TObject *Sender)    // DECRYPTION PROCEDURE
 	else if (((DiffOnFormActivateTickStart/1000) == 1) || ((DiffOnFormActivateTickStart/1000) < 1))
 	Memo->SelText = " second.";
 		 
-
 	Progress->StopProgressAnimation();
-	allProgress->StopProgressAnimation();
 	Timer2->Enabled = false;
  }
 
@@ -378,4 +360,40 @@ void __fastcall TForm2::FormShow(TObject *Sender)
 }
 }
 //---------------------------------------------------------------------------
+ int __fastcall TForm2::CompressFileZip(UnicodeString tempFile)
+  {
+	try{
+	Memo->Lines->Add("*Now compresing file: ");
+	Form1->Zip1->Reset();
+	Form1->Zip1->IncludeFiles(tempFile);
+	Form1->Zip1->ArchiveFile = Form1->GetFileNameExtension(tempFile,".zip");
+	Memo->SelStart = __appendline();
+	Memo->SelText = tempFile;
+	Form1->Zip1->ZipComment = "Encryptus";
+	Form1->Zip1->Compress();
+	Memo->SelText = " compressed";
+	}
 
+	catch (Exception &ipcex) {
+	Application->ShowException(&ipcex);
+	}
+
+ return 0;
+ }
+
+int __fastcall TForm2::DecompressFileZip(UnicodeString tempFile)
+  {
+ try{
+		Memo->Lines->Add("*Decompresing file... ");
+		Form1->Zip1->ArchiveFile = tempFile;
+		Form1->Zip1->ExtractToPath = Form1->FindPath(tempFile);
+		Form1->Zip1->ExtractAll();
+		Memo->SelStart = __appendline();
+		Memo->SelText = "done.";
+ }
+catch (Exception &ipcex)
+{
+    //
+}
+return 0;
+}

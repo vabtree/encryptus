@@ -36,6 +36,7 @@
 #include "ipcezcrypt.h"
 #include "ipzzip.h"
 #include "bsDialogs.hpp"
+#include "ipzzcompress.h"
 
 
 //---------------------------------------------------------------------------
@@ -44,11 +45,14 @@ extern UnicodeString EmptyString;
 extern UnicodeString Key;
 extern UnicodeString VerifyKey;
 extern UnicodeString totalcountmsg;
+extern UnicodeString Extension;
 
 extern  int countofitem;					// a counter in long run
 extern  int totalfilecount;
 extern  int totalfoldercount;
 extern int algo_type;
+extern int ProgressValue_Previous;
+
 
 extern bool crossCheck;
 extern bool compressionEvaluated;
@@ -57,8 +61,9 @@ extern bool allProgressEvaluated;
 extern bool algorithmSet;
 extern bool firstTimeInitialize;
 extern bool ENCRYPT_COMP;
-extern bool saveProgressState;
-extern bool updateAllProgressbar_Position;
+
+
+
 
 extern TJamShellListItem *Items;
 extern TJamFileListItems *itms;
@@ -126,7 +131,6 @@ __published:	// IDE-managed Components
 	TipcEzCrypt *Crypto;
 	TbsSkinComboBox *comboboxAlgorithms;
 	TbsSkinButton *Decrypt;
-	TipzZip *Zip1;
 	TbsSkinButton *Reset;
 	TbsCompressedSkinList *CompressedSkinList;
 	TbsSelectSkinDialog *SelectSkinDialog;
@@ -135,6 +139,8 @@ __published:	// IDE-managed Components
 	TMenuItem *N1;
 	TMenuItem *SemiTransparent;
 	TMenuItem *NoEffect;
+	TLabel *Compression;
+	TipzZip *Zip1;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -163,13 +169,14 @@ __published:	// IDE-managed Components
 	void __fastcall EncryptClick(TObject *Sender);
 	System::UnicodeString __fastcall GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension);
 	System::UnicodeString __fastcall RemoveFileExtension(UnicodeString InputFileName, UnicodeString Extension);
+    System::UnicodeString __fastcall GetExtension(UnicodeString InputFile, int indexInJamList);
+	System::UnicodeString __fastcall FindPath(UnicodeString InputFile);
 	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall btnCompressClick(TObject *Sender);
 	void __fastcall buttonDisable();
 	void __fastcall buttonEnable();
 	void __fastcall comboboxAlgorithmsChange(TObject *Sender);
 	void __fastcall CryptoProgress(TObject *Sender, TipcEzCryptProgressEventParams *e);
-	int __fastcall allProgressUpdate(int value);
 	void __fastcall Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e);
 	void __fastcall DecryptClick(TObject *Sender);
 	void __fastcall ResetClick(TObject *Sender);
