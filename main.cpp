@@ -21,8 +21,12 @@
 #pragma link "bsSkinHint"
 #pragma link "bsSkinExCtrls"
 #pragma link "SkinCtrls"
+#pragma link "bsSkinBoxCtrls"
+#pragma link "SkinBoxCtrls"
+#pragma link "spdbctrls"
 #pragma resource "*.dfm"
 TForm1 *Form1;
+static unsigned ifileCount = 0;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
@@ -137,5 +141,54 @@ void __fastcall TForm1::About1Click(TObject *Sender)
 		Aboutus->ShowModal();
 }
 //---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::JamFileList1AddItem(TJamFileListItem *Item, bool &CanAdd)
+
+{
+		++ifileCount;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+		JamFileList1->AutoSizeColumn  = -1;
+		ShowMessage(ifileCount);
+		JamFileList1->AutoSizeColumn  = 1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::StatusClick(TObject *Sender)
+{
+		UnicodeString Statusinfo = L"Number of Files Added:";
+
+		JamFileList1->AutoSizeColumn  = -1;
+		StatusInfo->MessageDlg(Statusinfo+ifileCount,mtInformation, mbYesNo,0);
+	   //	ShowMessage(ifileCount);
+	   //StatusInfo->WideMessageDlg(ifileCount,mtInformation,mbOK,0);
+		JamFileList1->AutoSizeColumn  = 1;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::ClearFileListClick(TObject *Sender)
+{
+		JamFileList1->Clear();
+		ifileCount = 0;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ClearSelectedFileClick(TObject *Sender)
+{
+//	   TJamFileListItem *selectedFile = JamFileList1->Selected;
+//	   UnicodeString name = JamFileList1->GetFullPath(selectedFile);
+	   JamFileList1->DeleteSelected();
+	   if(!JamFileList1->IsEmpty())
+		 --ifileCount;     // exceeding range
+}
+//---------------------------------------------------------------------------
+
 
 

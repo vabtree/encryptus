@@ -26,6 +26,9 @@
 #include "bsSkinHint.hpp"
 #include "bsSkinExCtrls.hpp"
 #include "SkinCtrls.hpp"
+#include "bsSkinBoxCtrls.hpp"
+#include "SkinBoxCtrls.hpp"
+#include "spdbctrls.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -69,6 +72,18 @@ __published:	// IDE-managed Components
 	TbsSkinPanel *bsSkinPanel1;
 	TJamFileList *JamFileList1;
 	TbsSkinSplitter *bsSkinSplitter3;
+	TbsSkinPanel *bsSkinPanel2;
+	TbsSkinPasswordEdit *bsSkinPasswordEdit1;
+	TbsSkinPasswordEdit *bsSkinPasswordEdit2;
+	TbsSkinSpeedButton *bsSkinSpeedButton1;
+	TbsPngImageList *bsPngImageList1;
+	TbsSkinButton *Status;
+	TbsSkinMessage *StatusInfo;
+	TbsSkinTextLabel *bsSkinTextLabel1;
+	TbsSkinTextLabel *bsSkinTextLabel2;
+	TspSkinDBComboBox *spSkinDBComboBox1;
+	TbsSkinButton *ClearFileList;
+	TbsSkinButton *ClearSelectedFile;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -83,6 +98,12 @@ __published:	// IDE-managed Components
 	void __fastcall ReportButtonClick(TObject *Sender);
 	void __fastcall ThumbnailsButtonClick(TObject *Sender);
 	void __fastcall About1Click(TObject *Sender);
+	void __fastcall JamFileList1AddItem(TJamFileListItem *Item, bool &CanAdd);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall StatusClick(TObject *Sender);
+	void __fastcall ClearFileListClick(TObject *Sender);
+	void __fastcall ClearSelectedFileClick(TObject *Sender);
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
