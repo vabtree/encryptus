@@ -77,17 +77,17 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 	for (int i = 0; i < countofitem; i++)
 	 {
 		itm = itms->Item[i];                      // grab index
-		String filenameitem = itm->Path;
+		UnicodeString filenameitem = itm->Path;
 
 		char *txt = AnsiString(filenameitem).c_str();
 		struct stat buf;
 
-		if( stat(txt,&buf) == 0 )
+		if( stat(txt,&buf) == 0 )		// if stat(txt,&buf) != 0 then errno set and error
 		{
 			if( buf.st_mode & S_IFDIR )
 			{
 				++totalfoldercount;
-				//Memo->Lines->Add("got a folder: " + filenameitem);  // skinp it
+				//Memo->Lines->Add("got a folder: " + filenameitem);  // skipping it
 			}
 			else if( buf.st_mode & S_IFREG )
 			{

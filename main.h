@@ -12,6 +12,7 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.Menus.hpp>
 #include <Vcl.ToolWin.hpp>
+#include <System.IOUtils.hpp>
 #include "JamControls.hpp"
 #include "ShellControls.hpp"
 #include <Vcl.ExtCtrls.hpp>
@@ -102,11 +103,9 @@ __published:	// IDE-managed Components
 	TMenuItem *File1;
 	TMenuItem *Exit1;
 	TMenuItem *Help1;
-	TMenuItem *Contents1;
 	TMenuItem *About1;
 	TbsBusinessSkinForm *BusinessSkinForm;
 	TbsSkinData *SkinData;
-	TbsSkinSpeedButton *ThemeButton;
 	TbsSkinSplitter *bsSkinSplitter2;
 	TbsSkinPanel *bsSkinPanel1;
 	TbsSkinSplitter *bsSkinSplitter3;
@@ -132,16 +131,11 @@ __published:	// IDE-managed Components
 	TbsSkinComboBox *comboboxAlgorithms;
 	TbsSkinButton *Decrypt;
 	TbsSkinButton *Reset;
-	TbsCompressedSkinList *CompressedSkinList;
 	TbsSelectSkinDialog *SelectSkinDialog;
-	TMenuItem *InactiveEffect;
-	TMenuItem *Blur;
-	TMenuItem *N1;
-	TMenuItem *SemiTransparent;
-	TMenuItem *NoEffect;
 	TLabel *Compression;
 	TipzZip *Zip1;
-	TbsSkinStatusBar *bsSkinStatusBar1;
+	TbsSkinHint *SkinHint;
+	TbsCompressedStoredSkin *CompressedStoredSkin;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -181,7 +175,6 @@ __published:	// IDE-managed Components
 	void __fastcall Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e);
 	void __fastcall DecryptClick(TObject *Sender);
 	void __fastcall ResetClick(TObject *Sender);
-	void __fastcall ThemeButtonClick(TObject *Sender);
 
 
 

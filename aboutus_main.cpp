@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "aboutus_main.h"
+#include "main.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "BusinessSkinForm"
@@ -25,7 +26,9 @@ __fastcall TAboutus::TAboutus(TComponent* Owner)
 
 void __fastcall TAboutus::bsPngImageView1Click(TObject *Sender)
 {
-
+	 //	BusinessSkinForm->ClientInActiveEffect = true;
+		Form1->BusinessSkinForm->ClientInActiveEffect = false;
+		Form1->BusinessSkinForm->HideClientInActiveEffect();
 		Aboutus->Close();
 }
 //---------------------------------------------------------------------------

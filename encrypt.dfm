@@ -75,8 +75,8 @@ object Form2: TForm2
       BevelOuter = bvRaised
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
-      Font.Name = 'Consolas'
+      Font.Height = -12
+      Font.Name = 'Fixedsys'
       Font.Style = []
       ParentFont = False
       ReadOnly = True
