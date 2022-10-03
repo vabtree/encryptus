@@ -45,7 +45,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 UnicodeString EmptyString = "";
 UnicodeString Key = "";
 UnicodeString VerifyKey = "";
-UnicodeString totalcountmsg = "total count: ";
+UnicodeString totalcountmsg = "Total Items to be processed: ";
 UnicodeString Extension = "";
 
 int ProgressValue_Previous = 0;
@@ -273,7 +273,7 @@ void __fastcall TForm1::TotalItemsClick(TObject *Sender)
 														  // a better option than  JamFileList1->TotalFileCount
 		countofitem = itms->Count;
 														 // count total itms in list
-		ShowMessage( totalcountmsg + countofitem);       // set as counter UP limit for Memo
+		msg->MessageDlg( totalcountmsg + countofitem, mtInformation, TMsgDlgButtons()<< mbOK, 0);       // set as counter UP limit for Memo
 
 }
 //---------------------------------------------------------------------------
@@ -393,8 +393,8 @@ void __fastcall TForm1::btnCompressClick(TObject *Sender)
 
 void __fastcall TForm1::comboboxAlgorithmsChange(TObject *Sender)
 {
-		algo_type = comboboxAlgorithms->ItemIndex;
 		algorithmSet = true;
+		algo_type = comboboxAlgorithms->ItemIndex;
 }
 //---------------------------------------------------------------------------
 
@@ -437,6 +437,9 @@ void __fastcall TForm1::ThemeButtonClick(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
+
+
 
 
 

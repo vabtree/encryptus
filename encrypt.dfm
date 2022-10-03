@@ -75,8 +75,8 @@ object Form2: TForm2
       BevelOuter = bvRaised
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Fixedsys'
+      Font.Height = -15
+      Font.Name = 'Consolas'
       Font.Style = []
       ParentFont = False
       ReadOnly = True
@@ -123,7 +123,6 @@ object Form2: TForm2
       Vertical = False
       ProgressAnimationPause = 500
       Align = alBottom
-      ExplicitTop = 332
     end
     object Close__: TbsSkinButton
       Left = 575
@@ -185,7 +184,7 @@ object Form2: TForm2
     UseSkinFontInMenu = True
     UseSkinFontInCaption = True
     UseSkinSizeInMenu = True
-    ShowIcon = False
+    ShowIcon = True
     MaximizeOnFullScreen = False
     AlphaBlend = False
     AlphaBlendAnimation = True

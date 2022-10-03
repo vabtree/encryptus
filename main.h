@@ -141,6 +141,7 @@ __published:	// IDE-managed Components
 	TMenuItem *NoEffect;
 	TLabel *Compression;
 	TipzZip *Zip1;
+	TbsSkinStatusBar *bsSkinStatusBar1;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
