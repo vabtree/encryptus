@@ -38,6 +38,7 @@
 #include "ipzzip.h"
 #include "bsDialogs.hpp"
 #include "ipzzcompress.h"
+#include "bsaadapter.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -135,7 +136,8 @@ __published:	// IDE-managed Components
 	TLabel *Compression;
 	TipzZip *Zip1;
 	TbsSkinHint *SkinHint;
-	TbsCompressedStoredSkin *CompressedStoredSkin;
+	TbsCompressedStoredSkin *CompressedStoredSkin1;
+	TbsaSkinAdapter *bskndptr1;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -175,6 +177,7 @@ __published:	// IDE-managed Components
 	void __fastcall Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e);
 	void __fastcall DecryptClick(TObject *Sender);
 	void __fastcall ResetClick(TObject *Sender);
+
 
 
 

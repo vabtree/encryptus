@@ -25,6 +25,7 @@ object Form2: TForm2
     Height = 384
     HintImageIndex = 0
     TabOrder = 0
+    SkinData = Form1.SkinData
     SkinDataName = 'panel'
     DefaultFont.Charset = DEFAULT_CHARSET
     DefaultFont.Color = clWindowText
@@ -56,14 +57,14 @@ object Form2: TForm2
       Left = 1
       Top = 268
       Width = 692
-      Height = 5
+      Height = 10
       Cursor = crVSplit
       Align = alTop
+      ResizeStyle = rsLine
       Transparent = False
       DefaultSize = 10
       SkinDataName = 'hsplitter'
-      ExplicitTop = 220
-      ExplicitWidth = 683
+      SkinData = Form1.SkinData
     end
     object Memo: TbsSkinMemo
       AlignWithMargins = True

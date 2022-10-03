@@ -11,6 +11,7 @@
 #include "se_ani.hpp"
 #include "se_effect.hpp"
 #include "se_form.hpp"
+#include "main.h"
 #include "bsPngImageList.hpp"
 //---------------------------------------------------------------------------
 class TAboutus : public TForm

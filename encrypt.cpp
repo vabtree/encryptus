@@ -1,10 +1,7 @@
-//---------------------------------------------------------------------------
-
 #include <vcl.h>
 #pragma hdrstop
-
 #include "encrypt.h"
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma link "BusinessSkinForm"
 #pragma link "bsSkinBoxCtrls"
@@ -14,7 +11,7 @@
 #include "main.h"
 
 TForm2 *Form2;
-//---------------------------------------------------------------------------
+
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {
@@ -82,12 +79,12 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 		char *txt = AnsiString(filenameitem).c_str();
 		struct stat buf;
 
-		if( stat(txt,&buf) == 0 )		// if stat(txt,&buf) != 0 then errno set and error
+		if( stat(txt,&buf) == 0 )		// total items need to be processed
 		{
-			if( buf.st_mode & S_IFDIR )
+			if( buf.st_mode & S_IFDIR ) 		// better use MACRO. like S_IFDIR(st_mode)
 			{
 				++totalfoldercount;
-				//Memo->Lines->Add("got a folder: " + filenameitem);  // skipping it
+				//Memo->Lines->Add("got a folder: " + filenameitem);  // skinp it
 			}
 			else if( buf.st_mode & S_IFREG )
 			{
@@ -122,10 +119,10 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 			char *txt = AnsiString(filenameitem).c_str();
 			struct stat buf;
 
-			if( stat(txt,&buf) == 0 )
+			if( stat(txt,&buf) == 0 )	// TODO - remove this**
 			{
 			UnicodeString temp_output_archive;
-				if( buf.st_mode & S_IFDIR )
+				if( buf.st_mode & S_IFDIR )	
 				{
 
 					 Memo->Lines->Add("File expected, got folder at index: ");
@@ -141,7 +138,7 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 					Memo->SelStart = __appendline();
 					Memo->SelText = filenameitem;
 
-				  try{
+				  try {
 					  Form1->Crypto->Overwrite = true;
 					  Form1->Crypto->InputFile = filenameitem;
 					  Form1->Crypto->OutputFile = Form1->GetFileNameExtension(filenameitem,".enc");
@@ -397,3 +394,4 @@ catch (Exception &ipcex)
 }
 return 0;
 }
+

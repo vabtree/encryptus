@@ -4,7 +4,7 @@
         <ProjectVersion>15.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <AppType>Application</AppType>
-        <MainSource>Encryptus45.cpp</MainSource>
+        <MainSource>Encryptus46.cpp</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -46,10 +46,10 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <AllPackageLibs>rtl.lib;vcl.lib;bsfcbxe6.lib;dbrtl.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vcldb.lib;vclimg.lib;JamShellDelphiXE2.lib;skinpackcbxe6.lib;secbxe6.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;bsfcbxe6.lib;dbrtl.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vcldb.lib;vclimg.lib;JamShellDelphiXE2.lib;skinpackcbxe6.lib;secbxe6.lib;skinpackdxe6.lib;vclie.lib</AllPackageLibs>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Multithreaded>true</Multithreaded>
-        <SanitizedProjectName>Encryptus45</SanitizedProjectName>
+        <SanitizedProjectName>Encryptus46</SanitizedProjectName>
         <ProjectType>CppVCLApplication</ProjectType>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -64,7 +64,6 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <ILINK_LibraryPath>E:\Embarcadero\projects xe6\Encryptus45 - eval\compiled\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -74,7 +73,7 @@
         <PackageImports>adortl;advchartcXE6;bcbie;bcbsmp;bdertl;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;bsfcbxe6;CloudService;CustomIPTransport;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbbde;inetdbxpress;Intraweb;JamShellDelphiXE2;lmdrtbar;lmdrtchart;lmdrtchartdb;lmdrtcore;lmdrtdesign;lmdrtdialog;lmdrtdocking;lmdrtelcore;lmdrteldb;lmdrtelpro;lmdrtfx;lmdrtgrid;lmdrtide;lmdrtinspector;lmdrtl;lmdrtparse;lmdrtplugin;lmdrtprint;lmdrtrtf;lmdrtrtfdb;lmdrtrtlx;lmdrtscript;lmdrtscriptimp;lmdrtsearch;lmdrtsearchdb;lmdrtshell;lmdrtstorage;lmdrtsyntax;lmdrtsys;lmdrtthemes;lmdrttools;lmdrttoolsdb;lmdrttxt;lmdrttxtdb;MetropolisUILiveTile;NxCollection6Dsgn_dxe6;NxCollection6Run_dxe6;NxDBGrid6Dsgn_dxe6;NxDBGrid6Run_dxe6;NxGrid6Run_dxe6;NxInspector6Dsgn_dxe6;NxInspector6Run_dxe6;NxLayout6Run_dxe6;NxStandard6Dsgn_dxe6;NxStandard6Run_dxe6;RESTBackendComponents;RESTComponents;rtl;secbxe6;sfcbxe6;skinpackcbxe6;soapmidas;soaprtl;soapserver;stylecontrols_cbxe6;svn;Tee;TeeDB;TeeUI;tethering;tmsdXE6;vcl;vclactnband;vcldb;vcldbx;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;vclribbon;VclSmp;vcltouch;vclx;xmlrtl;$(PackageImports)</PackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <BCC_PCHName_Clang>Encryptus45PCH1.h</BCC_PCHName_Clang>
+        <BCC_PCHName_Clang>Encryptus46PCH1.h</BCC_PCHName_Clang>
         <PackageImports>adortl;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CloudService;CustomIPTransport;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;Intraweb;JamShellDelphiXE2;MetropolisUILiveTile;NxCollection6Dsgn_dxe6;NxCollection6Run_dxe6;NxDBGrid6Dsgn_dxe6;NxDBGrid6Run_dxe6;NxGrid6Run_dxe6;NxInspector6Dsgn_dxe6;NxInspector6Run_dxe6;NxLayout6Run_dxe6;NxStandard6Dsgn_dxe6;NxStandard6Run_dxe6;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;Tee;TeeDB;TeeUI;tethering;tmsdXE6;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;vclribbon;VclSmp;vcltouch;vclx;xmlrtl;$(PackageImports)</PackageImports>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
     </PropertyGroup>
@@ -114,14 +113,16 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <VerInfo_Keys>CompanyName=Hebdogram;FileDescription=Encryptus;FileVersion=1.0.0.0;InternalName=Encryptus;LegalCopyright=Copyright 2017 Hebdogram. All rights reserved.;LegalTrademarks=Hebdogram - Invent more.;OriginalFilename=Encryptus;ProductName=Encryptus;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <BCC_IncludePath>E:\Embarcadero\ALMDEV\DynamicSkinForm1351\Debug\staticobjs;$(BCC_IncludePath)</BCC_IncludePath>
+        <IncludePath>E:\Embarcadero\ALMDEV\DynamicSkinForm1351\Debug\staticobjs;$(IncludePath)</IncludePath>
+        <VerInfo_Keys>CompanyName=Hebdogram;FileDescription=Encryptus;FileVersion=1.0.0.0;InternalName=Encryptus;LegalCopyright=Copyright 2017 Hebdogram. All rights reserved.;LegalTrademarks=Hebdogram - Invent more.;OriginalFilename=Encryptus - File encryptor.;ProductName=Encryptus;ProductVersion=1.0.0.0;Comments=https://www.hebdogram.wordpress.com</VerInfo_Keys>
         <DynamicRTL>false</DynamicRTL>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <UsePackages>false</UsePackages>
-        <LinkPackageStatics>rtl.lib;vcl.lib;bsfcbxe6.lib;dbrtl.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vcldb.lib;vclimg.lib;JamShellDelphiXE2.lib;skinpackcbxe6.lib;secbxe6.lib</LinkPackageStatics>
+        <LinkPackageStatics>rtl.lib;vcl.lib;bsfcbxe6.lib;dbrtl.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vcldb.lib;vclimg.lib;JamShellDelphiXE2.lib;skinpackcbxe6.lib;secbxe6.lib;skinpackdxe6.lib;vclie.lib</LinkPackageStatics>
         <Icon_MainIcon>Encryptus41_Icon.ico</Icon_MainIcon>
-        <ILINK_LibraryPath>$(BDS)\lib\win32\release\;C:\Users\Public\Documents\Embarcadero\Studio\14.0\DCP\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>$(BDS)\lib\win32\release\;C:\Users\Public\Documents\Embarcadero\Studio\14.0\DCP\;E:\Embarcadero\ALMDEV\DynamicSkinForm1351\Debug\staticobjs;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="aboutus_main.cpp">
@@ -130,129 +131,16 @@
             <DependentOn>aboutus_main.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
-        <ObjFiles Include="compiled\ipcaes.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>5</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcblowfish.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>6</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipccast.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>7</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipccertmgr.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>8</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipccore.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>9</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcdes.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>10</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcdpapi.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>11</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcdsa.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>12</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcecc.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>13</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcelgamal.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>14</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcezcrypt.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>15</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcezrand.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>16</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipchash.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>17</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcidea.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>18</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipckeymgr.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>19</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipconetimepassword.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>20</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcopenpgp.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>21</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcpbkdf.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>22</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcrc2.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>23</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcrc4.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>24</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcrsa.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>25</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcsmime.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>26</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipctea.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>27</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipctripledes.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>28</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipctwofish.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>29</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcxmlencrypt.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>30</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipcxmlsig.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>31</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <ObjFiles Include="compiled\ipworksencrypt.obj" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>32</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </ObjFiles>
-        <None Include="compiled\ipworksencrypt9.dll"/>
         <CppCompile Include="encrypt.cpp">
             <Form>Form2</Form>
             <FormType>dfm</FormType>
             <DependentOn>encrypt.h</DependentOn>
             <BuildOrder>4</BuildOrder>
         </CppCompile>
-        <CppCompile Include="Encryptus45.cpp">
+        <CppCompile Include="Encryptus46.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <PCHCompile Include="Encryptus45PCH1.h">
+        <PCHCompile Include="Encryptus46PCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
         <CppCompile Include="main.cpp">
@@ -284,15 +172,16 @@
                 <ProjectProperties>
                     <ProjectProperties Name="AutoShowDeps">True</ProjectProperties>
                     <ProjectProperties Name="ManagePaths">True</ProjectProperties>
-                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">False</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Source>
-                    <Source Name="MainSource">Encryptus45.cpp</Source>
+                    <Source Name="MainSource">Encryptus46.cpp</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\skinpackdxe6.bpl">(untitled)</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\bsfdxe6.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\sfdxe6.bpl">(untitled)</Excluded_Packages>
+                    <Excluded_Packages Name="E:\Embarcadero\TMS Instrumentation Workshop\vcwdXE6.bpl">TMS Instrumentation Workshop</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k200.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp200.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
