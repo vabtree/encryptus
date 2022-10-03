@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef Unit1H
-#define Unit1H
+#ifndef mainH
+#define mainH
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
@@ -68,6 +68,7 @@ __published:	// IDE-managed Components
 	TbsBusinessSkinForm *BusinessSkinForm;
 	TbsCompressedStoredSkin *CompressedSkin;
 	TbsSkinData *SkinData;
+	TbsSkinSpeedButton *ThemeButton;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -81,6 +82,7 @@ __published:	// IDE-managed Components
 	void __fastcall ListButtonClick(TObject *Sender);
 	void __fastcall ReportButtonClick(TObject *Sender);
 	void __fastcall ThumbnailsButtonClick(TObject *Sender);
+	void __fastcall About1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

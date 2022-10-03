@@ -3,7 +3,8 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "Unit1.h"
+#include "main.h"
+#include "aboutus_main.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "bsSkinCtrls"
@@ -26,6 +27,9 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
 }
+//---------------------------------------------------------------------------
+TJamShellListItem *Items;
+UnicodeString EmptyString = "";
 //---------------------------------------------------------------------------
 
 
@@ -75,9 +79,15 @@ void __fastcall TForm1::NewFolderButtonClick(TObject *Sender)
 void __fastcall TForm1::DeleteButtonClick(TObject *Sender)
 {
 		if(ShellList->Focused())
-		ShellList->InvokeCommandOnSelected("delete");
-		if(ShellTree->Focused())
-		ShellTree->InvokeCommandOnSelected("delete");
+		{
+			if(EmptyString.IsEmpty())
+			{
+				Items = ShellList->Selected;					// TJamShellListItem *Items;
+				ShowMessage(ShellList->GetFullPath(Items));
+			}
+		}
+   else
+   		ShowMessage("Safety chain");                           // TO BE REMOVED
 }
 //---------------------------------------------------------------------------
 
@@ -118,6 +128,12 @@ void __fastcall TForm1::ReportButtonClick(TObject *Sender)
 void __fastcall TForm1::ThumbnailsButtonClick(TObject *Sender)
 {
 		ShellList->Thumbnails = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::About1Click(TObject *Sender)
+{
+		Aboutus->ShowModal();
 }
 //---------------------------------------------------------------------------
 
