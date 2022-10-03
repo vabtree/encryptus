@@ -20,6 +20,7 @@
 #pragma link "bsColorCtrls"
 #pragma link "bsSkinHint"
 #pragma link "bsSkinExCtrls"
+#pragma link "SkinCtrls"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -136,4 +137,5 @@ void __fastcall TForm1::About1Click(TObject *Sender)
 		Aboutus->ShowModal();
 }
 //---------------------------------------------------------------------------
+
 

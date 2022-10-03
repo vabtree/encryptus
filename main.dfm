@@ -4,7 +4,7 @@ object Form1: TForm1
   BorderIcons = []
   Caption = 'Encryptus'
   ClientHeight = 584
-  ClientWidth = 809
+  ClientWidth = 930
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Form1: TForm1
   object Panel_coolbar: TbsSkinPanel
     Left = 0
     Top = 22
-    Width = 809
+    Width = 930
     Height = 40
     HintImageIndex = 0
     TabOrder = 0
@@ -52,10 +52,11 @@ object Form1: TForm1
     Spacing = 2
     Caption = 'Panel_coolbar'
     Align = alTop
+    ExplicitWidth = 809
     object ToolBar: TbsSkinToolBar
       Left = 1
       Top = 1
-      Width = 807
+      Width = 928
       Height = 38
       HintImageIndex = 0
       TabOrder = 0
@@ -86,7 +87,7 @@ object Form1: TForm1
       NumGlyphs = 1
       Spacing = 2
       Caption = 'ToolBar'
-      Align = alClient
+      Align = alTop
       CanScroll = False
       HotScroll = False
       ScrollOffset = 0
@@ -98,6 +99,7 @@ object Form1: TForm1
       ShowCaptions = False
       Flat = True
       Images = ToolBarImageList
+      ExplicitWidth = 807
       object MoveBackButton: TbsSkinSpeedButton
         Left = 0
         Top = 0
@@ -520,7 +522,7 @@ object Form1: TForm1
   object Panel_main: TbsSkinPanel
     Left = 0
     Top = 87
-    Width = 809
+    Width = 930
     Height = 497
     HintImageIndex = 0
     TabOrder = 1
@@ -552,10 +554,12 @@ object Form1: TForm1
     Spacing = 2
     Caption = 'Panel_main'
     Align = alClient
+    ExplicitTop = 90
+    ExplicitWidth = 809
     object bsSkinSplitter1: TbsSkinSplitter
       Left = 177
       Top = 1
-      Height = 343
+      Height = 342
       Transparent = False
       DefaultSize = 10
       SkinDataName = 'vsplitter'
@@ -565,21 +569,22 @@ object Form1: TForm1
     end
     object bsSkinSplitter2: TbsSkinSplitter
       Left = 1
-      Top = 344
-      Width = 807
-      Height = 2
+      Top = 343
+      Width = 928
+      Height = 3
       Cursor = crVSplit
       Align = alBottom
       Transparent = False
       DefaultSize = 10
       SkinDataName = 'hsplitter'
-      ExplicitTop = 368
+      ExplicitLeft = 3
+      ExplicitTop = 334
     end
     object Panel_shelltree: TbsSkinPanel
       Left = 1
       Top = 1
       Width = 176
-      Height = 343
+      Height = 342
       HintImageIndex = 0
       TabOrder = 0
       SkinDataName = 'panel'
@@ -610,48 +615,51 @@ object Form1: TForm1
       Spacing = 2
       Caption = 'Panel_shelltree'
       Align = alLeft
+      ExplicitHeight = 343
       object ShellTree: TJamShellTree
         Left = 1
         Top = 1
         Width = 174
-        Height = 341
+        Height = 340
         ShellLink = JamShellLink1
         Filter = '*'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
+        Font.Height = -11
+        Font.Name = 'Tahoma'
         Font.Style = []
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 341
       end
     end
     object ShellList: TJamShellList
       Left = 180
       Top = 1
-      Width = 628
-      Height = 343
+      Width = 749
+      Height = 342
       Filter = '*'
       SpecialFolder = SF_DESKTOP
       ShellLink = JamShellLink1
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
+      Font.Height = -11
+      Font.Name = 'Tahoma'
       Font.Style = []
       IconOptions.AutoArrange = True
       RowSelect = True
       TabOrder = 1
+      ExplicitLeft = 272
+      ExplicitWidth = 657
     end
-    object Panel_controls: TbsSkinPanel
+    object bsSkinPanel1: TbsSkinPanel
       Left = 1
       Top = 346
-      Width = 807
+      Width = 928
       Height = 150
       HintImageIndex = 0
       TabOrder = 2
-      SkinData = SkinData
       SkinDataName = 'panel'
       DefaultFont.Charset = DEFAULT_CHARSET
       DefaultFont.Color = clWindowText
@@ -678,98 +686,49 @@ object Form1: TForm1
       RollUpState = False
       NumGlyphs = 1
       Spacing = 2
-      Caption = 'Panel_controls'
+      Caption = 'bsSkinPanel1'
       Align = alBottom
-      object Panel_thumbnail: TbsSkinPanel
+      ExplicitLeft = 392
+      ExplicitTop = 176
+      ExplicitWidth = 150
+      object bsSkinSplitter3: TbsSkinSplitter
+        Left = 609
+        Top = 1
+        Height = 148
+        Transparent = False
+        DefaultSize = 10
+        SkinDataName = 'vsplitter'
+        ExplicitLeft = 464
+        ExplicitTop = 24
+        ExplicitHeight = 100
+      end
+      object JamFileList1: TJamFileList
         Left = 1
         Top = 1
-        Width = 178
+        Width = 608
         Height = 148
-        HintImageIndex = 0
-        TabOrder = 0
-        SkinData = SkinData
-        SkinDataName = 'panel'
-        DefaultFont.Charset = DEFAULT_CHARSET
-        DefaultFont.Color = clWindowText
-        DefaultFont.Height = 13
-        DefaultFont.Name = 'Tahoma'
-        DefaultFont.Style = []
-        DefaultWidth = 0
-        DefaultHeight = 0
-        UseSkinFont = True
-        EmptyDrawing = False
-        RibbonStyle = False
-        ImagePosition = bsipDefault
-        TransparentMode = False
-        CaptionImageIndex = -1
-        RealHeight = -1
-        AutoEnabledControls = True
-        CheckedMode = False
-        Checked = False
-        DefaultAlignment = taLeftJustify
-        DefaultCaptionHeight = 20
-        BorderStyle = bvRaised
-        CaptionMode = False
-        RollUpMode = False
-        RollUpState = False
-        NumGlyphs = 1
-        Spacing = 2
-        Caption = 'Panel_thumbnail'
+        ShellContextMenu = False
+        ParentFont = True
+        UseSystemFont = False
         Align = alLeft
-        object bsSkinSplitter3: TbsSkinSplitter
-          Left = 174
-          Top = 1
-          Height = 146
-          Align = alRight
-          Visible = False
-          Transparent = False
-          DefaultSize = 10
-          SkinDataName = 'vsplitter'
-          ExplicitLeft = 144
-          ExplicitTop = 48
-          ExplicitHeight = 100
-        end
-      end
-      object Message: TbsSkinButton
-        Left = 688
-        Top = 24
-        Width = 89
-        Height = 33
-        HintImageIndex = 0
-        TabOrder = 1
-        SkinDataName = 'button'
-        DefaultFont.Charset = DEFAULT_CHARSET
-        DefaultFont.Color = clWindowText
-        DefaultFont.Height = 13
-        DefaultFont.Name = 'Tahoma'
-        DefaultFont.Style = []
-        DefaultWidth = 0
-        DefaultHeight = 0
-        UseSkinFont = True
-        Transparent = False
-        CheckedMode = False
-        ImageIndex = 0
-        AlwaysShowLayeredFrame = False
-        UseSkinSize = True
-        UseSkinFontColor = True
-        RepeatMode = False
-        RepeatInterval = 100
-        AllowAllUp = False
-        TabStop = True
-        CanFocused = True
-        Down = False
-        GroupIndex = 0
-        Caption = 'Message'
-        NumGlyphs = 1
-        Spacing = 1
-        OnClick = MessageClick
+        GridLines = True
+        IconOptions.AutoArrange = True
+        RowSelect = True
+        ShowContextMenuOnTop = False
+        TabOrder = 0
+        FullDrag = True
+        SearchOptions.MaxFileSize = -1
+        SearchOptions.MinFileSize = 0
+        SearchOptions.Filter = '*'
+        ShellLink = JamShellLink1
+        AutoSizeColumn = 1
       end
     end
   end
   object Panel_shellcombo: TbsSkinPanel
     Left = 0
     Top = 62
-    Width = 809
+    Width = 930
     Height = 25
     HintImageIndex = 0
     TabOrder = 2
@@ -801,37 +760,40 @@ object Form1: TForm1
     Spacing = 2
     Caption = 'Panel_shellcombo'
     Align = alTop
+    ExplicitWidth = 809
     object JamShellBreadCrumbBar1: TJamShellBreadCrumbBar
       Left = 1
       Top = 1
-      Width = 807
+      Width = 928
       Framed = False
       ReadOnly = False
       Align = alClient
       ShellLink = JamShellLink1
       Path = 'C:\Users\VA\Desktop'
       SpecialFolder = SF_DESKTOP
+      ExplicitWidth = 807
     end
     object JamShellCombo1: TJamShellCombo
       Left = 1
       Top = 1
-      Width = 807
-      Height = 24
+      Width = 928
+      Height = 22
       ShellLink = JamShellLink1
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
+      Font.Height = -11
+      Font.Name = 'Tahoma'
       Font.Style = []
       TabOrder = 1
       Text = 'JamShellCombo1'
+      ExplicitWidth = 807
     end
   end
   object MainMenuBar: TbsSkinMainMenuBar
     Left = 0
     Top = 0
-    Width = 809
+    Width = 930
     Height = 22
     HintImageIndex = 0
     TabOrder = 3
@@ -853,20 +815,21 @@ object Form1: TForm1
     BusinessSkinForm = BusinessSkinForm
     MainMenu = MainMenu
     Align = alTop
+    ExplicitWidth = 809
   end
   object JamShellLink1: TJamShellLink
-    Left = 200
-    Top = 470
+    Left = 736
+    Top = 126
   end
   object ToolBarImageList: TImageList
     BlendColor = clWhite
     Height = 32
     ShareImages = True
     Width = 32
-    Left = 361
-    Top = 469
+    Left = 505
+    Top = 29
     Bitmap = {
-      494C01010B004000940020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B009800980020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000FDFDFD02FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFB
@@ -2476,12 +2439,12 @@ object Form1: TForm1
     DefaultButtonFont.Name = 'Tahoma'
     DefaultButtonFont.Style = []
     UseSkinFont = True
-    Left = 753
-    Top = 509
+    Left = 817
+    Top = 109
   end
   object MainMenu: TbsSkinMainMenu
-    Left = 505
-    Top = 505
+    Left = 465
+    Top = 25
     object File1: TMenuItem
       Caption = '&File'
       object Exit1: TMenuItem
@@ -2563,13 +2526,13 @@ object Form1: TForm1
     Magnetic = False
     MagneticSize = 5
     BorderIcons = [biSystemMenu, biMinimize, biMaximize, biRollUp]
-    Left = 680
-    Top = 504
+    Left = 752
+    Top = 32
   end
   object CompressedSkin: TbsCompressedStoredSkin
     CompressedFileName = 'Win10ModernSlateGray.skn'
-    Left = 657
-    Top = 545
+    Left = 713
+    Top = 25
     CompressedData = {
       78DAEDDD7B9024E759E7FB91618D65218364072BEC65D93097D0DA6DBBEED525
       D3E7802C7C936429E40BBE8071CF4C4BD3786E9AE919C996ADC3E1E2B38205B3
@@ -3394,7 +3357,7 @@ object Form1: TForm1
     SkinIndex = 0
     ChangeSystemColors = False
     SystemColorHooks = [bsschHighLight]
-    Left = 617
-    Top = 489
+    Left = 673
+    Top = 25
   end
 end

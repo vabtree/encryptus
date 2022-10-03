@@ -25,6 +25,7 @@
 #include "bsColorCtrls.hpp"
 #include "bsSkinHint.hpp"
 #include "bsSkinExCtrls.hpp"
+#include "SkinCtrls.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -36,19 +37,14 @@ __published:	// IDE-managed Components
 	TJamShellList *ShellList;
 	TJamShellLink *JamShellLink1;
 	TbsSkinSplitter *bsSkinSplitter1;
-	TbsSkinPanel *Panel_controls;
-	TbsSkinPanel *Panel_thumbnail;
-	TbsSkinSplitter *bsSkinSplitter2;
 	TbsSkinPanel *Panel_shellcombo;
 	TJamShellBreadCrumbBar *JamShellBreadCrumbBar1;
 	TJamShellCombo *JamShellCombo1;
 	TImageList *ToolBarImageList;
-	TbsSkinButton *Message;
 	TbsSkinMessage *bsSkinMessage1;
 	TbsSkinToolBar *ToolBar;
 	TbsSkinSpeedButton *MoveBackButton;
 	TbsSkinSpeedButton *MoveForwardButton;
-	TbsSkinSplitter *bsSkinSplitter3;
 	TbsSkinSpeedButton *ParentButton;
 	TbsSkinSpeedButton *NewFolderButton;
 	TbsSkinSpeedButton *DeleteButton;
@@ -69,6 +65,10 @@ __published:	// IDE-managed Components
 	TbsCompressedStoredSkin *CompressedSkin;
 	TbsSkinData *SkinData;
 	TbsSkinSpeedButton *ThemeButton;
+	TbsSkinSplitter *bsSkinSplitter2;
+	TbsSkinPanel *bsSkinPanel1;
+	TJamFileList *JamFileList1;
+	TbsSkinSplitter *bsSkinSplitter3;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
