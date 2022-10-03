@@ -1,0 +1,19 @@
+System::UnicodeString __fastcall TForm1::GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension){
+	UnicodeString copy_InputFile = InputFileName;
+	return (copy_InputFile.Insert(Extension,InputFileName.Length()+1));
+}
+
+System::UnicodeString __fastcall TForm1::RemoveFileExtension(UnicodeString InputFileName, UnicodeString Extension){
+	unsigned int index = 0;
+	unsigned int lengthExtension = Extension.Length();
+	UnicodeString copy_InputFile = InputFileName;
+	index = (InputFileName.Pos(Extension));
+	if(index == 0)
+	return InputFileName;  // file.Extension does not exist
+	else
+	return (copy_InputFile.Delete(index,lengthExtension));
+}
+
+
+System::UnicodeString __fastcall GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension);
+System::UnicodeString __fastcall RemoveFileExtension(UnicodeString InputFileName, UnicodeString Extension);

@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "main.h"
-
+#include "aboutus_main.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "bsSkinCtrls"
@@ -28,8 +28,6 @@
 #pragma link "se_controls"
 #pragma link "se_pngimagelist"
 #pragma resource "*.dfm"
-#include "encrypt.h"
-
 TForm1 *Form1;
 static unsigned iFileCount;
 //---------------------------------------------------------------------------
@@ -38,19 +36,11 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
+TJamShellListItem *Items;
 UnicodeString EmptyString = "";
 UnicodeString Key = "";
 UnicodeString VerifyKey = "";
-String totalcountmsg = "total count: ";
-
- int totalfilecount = 0;
- int totalfoldercount = 0;
- int countofitem = 0;					// a counter in long run
-
 bool crossCheck = false;
-TJamShellListItem *Items;
-TJamFileListItems *itms;
-TJamFileListItem *itm;
 
 //---------------------------------------------------------------------------
 
@@ -59,7 +49,7 @@ void __fastcall TForm1::MessageClick(TObject *Sender)
 {
 //		bsSkinMessage1.MessageDlg('wey',mtConfirmation,mbOKCancel,0);
 
-		bsSkinMessage1->MessageDlg("Encryptus",mtInformation,TMsgDlgButtons() << mbYes,0);
+		bsSkinMessage1->MessageDlg("Encryptus",mtInformation,mbOKCancel,0);
 }
 //---------------------------------------------------------------------------
 
@@ -78,7 +68,6 @@ void __fastcall TForm1::DisplayHint(TObject *Sender)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	Application->OnHint = DisplayHint;
-
 }
 void __fastcall TForm1::MoveForwardButtonClick(TObject *Sender)
 {
@@ -161,19 +150,47 @@ void __fastcall TForm1::About1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
+
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+		JamFileList1->AutoSizeColumn  = -1;
+		ShowMessage(iFileCount);
+		JamFileList1->AutoSizeColumn  = 1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::StatusClick(TObject *Sender)
+{
+		UnicodeString Statusinfo = L"Number of Files Added:";
+
+		JamFileList1->AutoSizeColumn  = -1;
+		StatusInfo->MessageDlg(Statusinfo+iFileCount,mtInformation, mbYesNo,0);
+		JamFileList1->AutoSizeColumn  = 1;
+
+														//		ShowMessage(ifileCount);
+														//		StatusInfo->WideMessageDlg(ifileCount,mtInformation,mbOK,0);
+}
+//---------------------------------------------------------------------------
+
+
 void __fastcall TForm1::ClearFileListClick(TObject *Sender)
 {
-		JamFileList1->Clear();														//	ifileCount = 0;
+		JamFileList1->Clear();
+														//	ifileCount = 0;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ClearSelectedFileClick(TObject *Sender)
 {
-//	   TJamFileListItem *selectedFile = JamFileList1->Selected;
-//	   UnicodeString name = JamFileList1->GetFullPath(selectedFile);
+													//	   TJamFileListItem *selectedFile = JamFileList1->Selected;
+													//	   UnicodeString name = JamFileList1->GetFullPath(selectedFile);
+
 	   if(JamFileList1->Selected)
 			JamFileList1->DeleteSelected();
-
+													//	   JamFileList1->DeleteSelected();
+													//	   if(!JamFileList1->IsEmpty())
+													// --ifileCount; 	exceeding range
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::bsSkinSpeedButton1Click(TObject *Sender)
@@ -181,6 +198,8 @@ void __fastcall TForm1::bsSkinSpeedButton1Click(TObject *Sender)
 		ShowMessage(Key);
 }
 //---------------------------------------------------------------------------
+
+
 
 void __fastcall TForm1::PngButtonVerifyKey_Disable(){
 		PngButtonVerifyKey->ImageDonwIndex = 0;
@@ -226,6 +245,22 @@ void __fastcall TForm1::passwordVerifyKeyChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::ListFolderClick(TObject *Sender)
+{
+		int totalfiles = JamFileList1->TotalFileCount;		// total no of items
+//		__int64 filesize = JamFileList1->TotalFileSize;
+		ShowMessage(totalfiles);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ListFilesClick(TObject *Sender)
+{
+		int filecount = JamFileList1->GetCount();   // robust number of file left/present
+		ShowMessage(filecount);
+}
+//---------------------------------------------------------------------------
+
+
 void __fastcall TForm1::HideGrid1Click(TObject *Sender)
 {
 			if(HideGrid1->Checked == false)
@@ -240,48 +275,17 @@ void __fastcall TForm1::HideGrid1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::JamFileList1AddPath(UnicodeString Path, bool &CanAdd)
+{
+		ShowMessage(" a folder added");
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TForm1::JamFileList1AddItem(TJamFileListItem *Item, bool &CanAdd)
 
 {
-	   //	itms = JamFileList1->Items;
-		//countofitems = itms->Count;
-		//ShowMessage(countofitems);
+	   UnicodeString p = Item->Index;
+       JamFileList1->GetItemAt(0,0);
+	   ShowMessage(p);
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TForm1::TotalItemsClick(TObject *Sender)
-{
-														  // a better option than  JamFileList1->TotalFileCount
-		countofitem = itms->Count;
-														 // count total itms in list
-		ShowMessage( totalcountmsg + countofitem);       // set as counter UP limit for Memo
-
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm1::spawnClick(TObject *Sender)
-{
-		Form2->ShowModal();
-}
-//---------------------------------------------------------------------------
-System::UnicodeString __fastcall TForm1::GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension){
-	UnicodeString copy_InputFile = InputFileName;
-	return (copy_InputFile.Insert(Extension,InputFileName.Length()+1));
-}
-
-System::UnicodeString __fastcall TForm1::RemoveFileExtension(UnicodeString InputFileName, UnicodeString Extension){
-	unsigned int index = 0;
-	unsigned int lengthExtension = Extension.Length();
-	UnicodeString copy_InputFile = InputFileName;
-	index = (InputFileName.Pos(Extension));
-	if(index == 0)
-	return InputFileName;  // file.Extension does not exist
-	else
-	return (copy_InputFile.Delete(index,lengthExtension));
-}
-void __fastcall TForm1::FormActivate(TObject *Sender)
-{
-		itms = JamFileList1->Items;
-}
-//---------------------------------------------------------------------------
-

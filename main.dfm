@@ -14,6 +14,8 @@ object Form1: TForm1
   Menu = MainMenu
   OldCreateOrder = False
   Scaled = False
+  OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel_coolbar: TbsSkinPanel
@@ -746,44 +748,6 @@ object Form1: TForm1
         DesignSize = (
           618
           176)
-        object bsSkinSpeedButton1: TbsSkinSpeedButton
-          Left = 517
-          Top = 85
-          Width = 90
-          Height = 40
-          Cursor = crHandPoint
-          HintImageIndex = 0
-          Anchors = [akTop, akRight]
-          SkinData = SkinData
-          SkinDataName = 'resizebutton'
-          DefaultFont.Charset = DEFAULT_CHARSET
-          DefaultFont.Color = clWindowText
-          DefaultFont.Height = 13
-          DefaultFont.Name = 'Tahoma'
-          DefaultFont.Style = []
-          DefaultWidth = 0
-          DefaultHeight = 0
-          UseSkinFont = True
-          CheckedMode = False
-          ImageList = bsPngImageList1
-          UseSkinSize = True
-          UseSkinFontColor = True
-          WidthWithCaption = 0
-          WidthWithoutCaption = 0
-          ImageIndex = 0
-          RepeatMode = False
-          RepeatInterval = 100
-          Transparent = False
-          Flat = False
-          AllowAllUp = False
-          Down = False
-          GroupIndex = 0
-          Caption = 'Start'
-          ShowCaption = True
-          NumGlyphs = 1
-          Spacing = 1
-          OnClick = bsSkinSpeedButton1Click
-        end
         object bsSkinTextLabel1: TbsSkinTextLabel
           Left = 361
           Top = 10
@@ -945,8 +909,8 @@ object Form1: TForm1
           ParentFont = False
         end
         object ClearFileList: TbsSkinButton
-          Left = 8
-          Top = 71
+          Left = 16
+          Top = 55
           Width = 75
           Height = 30
           Cursor = crHandPoint
@@ -981,8 +945,8 @@ object Form1: TForm1
           OnClick = ClearFileListClick
         end
         object ClearSelectedFile: TbsSkinButton
-          Left = 101
-          Top = 71
+          Left = 16
+          Top = 111
           Width = 95
           Height = 30
           Cursor = crHandPoint
@@ -1016,26 +980,22 @@ object Form1: TForm1
           Spacing = 1
           OnClick = ClearSelectedFileClick
         end
-        object ListFolder: TspSkinButton
-          Left = 101
-          Top = 123
-          Width = 95
+        object TotalItems: TbsSkinButton
+          Left = 144
+          Top = 111
+          Width = 75
           Height = 30
           HintImageIndex = 0
           TabOrder = 5
-          DrawDefault = True
           SkinDataName = 'button'
-          AlphaBlend = False
-          AlphaBlendValue = 200
-          UseSkinCursor = False
           DefaultFont.Charset = DEFAULT_CHARSET
           DefaultFont.Color = clWindowText
           DefaultFont.Height = 13
           DefaultFont.Name = 'Tahoma'
           DefaultFont.Style = []
-          UseSkinFont = True
           DefaultWidth = 0
           DefaultHeight = 0
+          UseSkinFont = True
           Transparent = False
           CheckedMode = False
           ImageIndex = -1
@@ -1049,17 +1009,18 @@ object Form1: TForm1
           CanFocused = True
           Down = False
           GroupIndex = 0
-          Caption = 'List Total Folder'
+          Caption = 'TotalItems'
           NumGlyphs = 1
           Spacing = 1
-          OnClick = ListFolderClick
+          OnClick = TotalItemsClick
         end
-        object ListFiles: TbsSkinButton
-          Left = 8
-          Top = 123
+        object spawn: TbsSkinButton
+          Left = 500
+          Top = 82
           Width = 75
-          Height = 30
+          Height = 40
           HintImageIndex = 0
+          Anchors = [akTop, akRight]
           TabOrder = 6
           SkinDataName = 'button'
           DefaultFont.Charset = DEFAULT_CHARSET
@@ -1083,44 +1044,10 @@ object Form1: TForm1
           CanFocused = True
           Down = False
           GroupIndex = 0
-          Caption = 'List Total Files'
+          Caption = 'spawn'
           NumGlyphs = 1
           Spacing = 1
-          OnClick = ListFilesClick
-        end
-        object Status: TbsSkinButton
-          Left = 112
-          Top = 40
-          Width = 75
-          Height = 25
-          HintImageIndex = 0
-          TabOrder = 7
-          SkinDataName = 'button'
-          DefaultFont.Charset = DEFAULT_CHARSET
-          DefaultFont.Color = clWindowText
-          DefaultFont.Height = 13
-          DefaultFont.Name = 'Tahoma'
-          DefaultFont.Style = []
-          DefaultWidth = 0
-          DefaultHeight = 0
-          UseSkinFont = True
-          Transparent = False
-          CheckedMode = False
-          ImageIndex = -1
-          AlwaysShowLayeredFrame = False
-          UseSkinSize = True
-          UseSkinFontColor = True
-          RepeatMode = False
-          RepeatInterval = 100
-          AllowAllUp = False
-          TabStop = True
-          CanFocused = True
-          Down = False
-          GroupIndex = 0
-          Caption = 'Status'
-          NumGlyphs = 1
-          Spacing = 1
-          OnClick = StatusClick
+          OnClick = spawnClick
         end
       end
       object JamFileList1: TJamFileList
@@ -1251,7 +1178,7 @@ object Form1: TForm1
     Left = 753
     Top = 13
     Bitmap = {
-      494C01010B00AC00C80120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B00AC00EC0120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000FDFDFD02FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFBFB04FBFB
@@ -2963,7 +2890,7 @@ object Form1: TForm1
   object CompressedSkin: TbsCompressedStoredSkin
     FileName = 'Win8.skn'
     CompressedFileName = 'Win8.skn'
-    Left = 1145
+    Left = 1177
     Top = 209
     CompressedData = {
       78DAEC9D077814C999F74784CD1176C9990584244416414491738E0B08916183
@@ -5080,7 +5007,7 @@ object Form1: TForm1
     Left = 990
     Top = 178
     Bitmap = {
-      494C010101000800400020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800640020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -5734,7 +5661,7 @@ object Form1: TForm1
     Left = 1208
     Top = 336
     Bitmap = {
-      494C010103000800140018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800380018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000001800000001002000000000000024
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF

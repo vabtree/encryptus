@@ -1,9 +1,11 @@
 object Aboutus: TAboutus
   Left = 0
   Top = 0
+  BorderIcons = []
+  BorderStyle = bsNone
   Caption = 'Aboutus'
-  ClientHeight = 362
-  ClientWidth = 584
+  ClientHeight = 400
+  ClientWidth = 600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,8 +21,8 @@ object Aboutus: TAboutus
   object bsPngImageView1: TbsPngImageView
     Left = 0
     Top = 0
-    Width = 584
-    Height = 362
+    Width = 600
+    Height = 400
     DoubleBuffered = False
     ReflectionEffect = False
     PngImageStorage = bsPngImageStorage1
@@ -28,8 +30,7 @@ object Aboutus: TAboutus
     Align = alClient
     Center = True
     OnClick = bsPngImageView1Click
-    ExplicitWidth = 608
-    ExplicitHeight = 400
+    ExplicitWidth = 584
   end
   object seAnimationForm1: TseAnimationForm
     ShowAnimationExecOnce = False
