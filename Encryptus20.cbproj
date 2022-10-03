@@ -4,7 +4,7 @@
         <ProjectVersion>15.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <AppType>Application</AppType>
-        <MainSource>Encryptus15.cpp</MainSource>
+        <MainSource>Encryptus20.cpp</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -49,7 +49,7 @@
         <AllPackageLibs>rtl.lib;vcl.lib;bsfcbxe6.lib;dbrtl.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vcldb.lib;vclimg.lib;JamShellDelphiXE2.lib;skinpackcbxe6.lib;secbxe6.lib</AllPackageLibs>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Multithreaded>true</Multithreaded>
-        <SanitizedProjectName>Encryptus15</SanitizedProjectName>
+        <SanitizedProjectName>Encryptus20</SanitizedProjectName>
         <ProjectType>CppVCLApplication</ProjectType>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -73,7 +73,7 @@
         <PackageImports>adortl;advchartcXE6;bcbie;bcbsmp;bdertl;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;bsfcbxe6;CloudService;CustomIPTransport;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbbde;inetdbxpress;Intraweb;JamShellDelphiXE2;lmdrtbar;lmdrtchart;lmdrtchartdb;lmdrtcore;lmdrtdesign;lmdrtdialog;lmdrtdocking;lmdrtelcore;lmdrteldb;lmdrtelpro;lmdrtfx;lmdrtgrid;lmdrtide;lmdrtinspector;lmdrtl;lmdrtparse;lmdrtplugin;lmdrtprint;lmdrtrtf;lmdrtrtfdb;lmdrtrtlx;lmdrtscript;lmdrtscriptimp;lmdrtsearch;lmdrtsearchdb;lmdrtshell;lmdrtstorage;lmdrtsyntax;lmdrtsys;lmdrtthemes;lmdrttools;lmdrttoolsdb;lmdrttxt;lmdrttxtdb;MetropolisUILiveTile;NxCollection6Dsgn_dxe6;NxCollection6Run_dxe6;NxDBGrid6Dsgn_dxe6;NxDBGrid6Run_dxe6;NxGrid6Run_dxe6;NxInspector6Dsgn_dxe6;NxInspector6Run_dxe6;NxLayout6Run_dxe6;NxStandard6Dsgn_dxe6;NxStandard6Run_dxe6;RESTBackendComponents;RESTComponents;rtl;secbxe6;sfcbxe6;skinpackcbxe6;soapmidas;soaprtl;soapserver;stylecontrols_cbxe6;svn;Tee;TeeDB;TeeUI;tethering;tmsdXE6;vcl;vclactnband;vcldb;vcldbx;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;vclribbon;VclSmp;vcltouch;vclx;xmlrtl;$(PackageImports)</PackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <BCC_PCHName_Clang>Encryptus15PCH1.h</BCC_PCHName_Clang>
+        <BCC_PCHName_Clang>Encryptus20PCH1.h</BCC_PCHName_Clang>
         <PackageImports>adortl;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CloudService;CustomIPTransport;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;Intraweb;JamShellDelphiXE2;MetropolisUILiveTile;NxCollection6Dsgn_dxe6;NxCollection6Run_dxe6;NxDBGrid6Dsgn_dxe6;NxDBGrid6Run_dxe6;NxGrid6Run_dxe6;NxInspector6Dsgn_dxe6;NxInspector6Run_dxe6;NxLayout6Run_dxe6;NxStandard6Dsgn_dxe6;NxStandard6Run_dxe6;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;Tee;TeeDB;TeeUI;tethering;tmsdXE6;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;vclribbon;VclSmp;vcltouch;vclx;xmlrtl;$(PackageImports)</PackageImports>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
     </PropertyGroup>
@@ -111,7 +111,12 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <LinkPackageImports>rtl.bpi;vcl.bpi;bsfcbxe6.bpi;dbrtl.bpi;xmlrtl.bpi;vclactnband.bpi;vclx.bpi;vcldb.bpi;vclimg.bpi;JamShellDelphiXE2.bpi</LinkPackageImports>
+        <DynamicRTL>false</DynamicRTL>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <UsePackages>false</UsePackages>
+        <LinkPackageStatics>rtl.lib;vcl.lib;bsfcbxe6.lib;dbrtl.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vcldb.lib;vclimg.lib;JamShellDelphiXE2.lib;skinpackcbxe6.lib;secbxe6.lib</LinkPackageStatics>
+        <Icon_MainIcon>Encryptus20_Icon.ico</Icon_MainIcon>
         <ILINK_LibraryPath>$(BDS)\lib\win32\release\;C:\Users\Public\Documents\Embarcadero\Studio\14.0\DCP\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <ItemGroup>
@@ -121,10 +126,10 @@
             <DependentOn>aboutus_main.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
-        <CppCompile Include="Encryptus15.cpp">
+        <CppCompile Include="Encryptus20.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <PCHCompile Include="Encryptus15PCH1.h">
+        <PCHCompile Include="Encryptus20PCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
         <CppCompile Include="main.cpp">
@@ -159,14 +164,9 @@
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Source>
-                    <Source Name="MainSource">Encryptus15.cpp</Source>
+                    <Source Name="MainSource">Encryptus20.cpp</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\sedxe6.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\skinpackdxe6.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\BPL\JamShellCPPBuilderXE2.bpl">JamShellCPPBuilderXE2</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\StyleControls_dxe6.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\bsfdxe6.bpl">(untitled)</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k200.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp200.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>

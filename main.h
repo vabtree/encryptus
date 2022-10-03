@@ -29,6 +29,9 @@
 #include "bsSkinBoxCtrls.hpp"
 #include "SkinBoxCtrls.hpp"
 #include "spdbctrls.hpp"
+#include "SkinExCtrls.hpp"
+#include "se_controls.hpp"
+#include "se_pngimagelist.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -70,20 +73,26 @@ __published:	// IDE-managed Components
 	TbsSkinSpeedButton *ThemeButton;
 	TbsSkinSplitter *bsSkinSplitter2;
 	TbsSkinPanel *bsSkinPanel1;
-	TJamFileList *JamFileList1;
 	TbsSkinSplitter *bsSkinSplitter3;
 	TbsSkinPanel *bsSkinPanel2;
-	TbsSkinPasswordEdit *bsSkinPasswordEdit1;
-	TbsSkinPasswordEdit *bsSkinPasswordEdit2;
+	TbsSkinPasswordEdit *passwordKey;
+	TbsSkinPasswordEdit *passwordVerifyKey;
 	TbsSkinSpeedButton *bsSkinSpeedButton1;
 	TbsPngImageList *bsPngImageList1;
-	TbsSkinButton *Status;
 	TbsSkinMessage *StatusInfo;
 	TbsSkinTextLabel *bsSkinTextLabel1;
 	TbsSkinTextLabel *bsSkinTextLabel2;
 	TspSkinDBComboBox *spSkinDBComboBox1;
 	TbsSkinButton *ClearFileList;
 	TbsSkinButton *ClearSelectedFile;
+	TspSkinButton *ListFolder;
+	TbsSkinButton *ListFiles;
+	TMenuItem *View1;
+	TMenuItem *HideGrid1;
+	TJamFileList *JamFileList1;
+	TbsSkinButton *Status;
+	TsePngImageList *PngImageVerifyKey;
+	TsePngXButton *PngButtonVerifyKey;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -98,11 +107,22 @@ __published:	// IDE-managed Components
 	void __fastcall ReportButtonClick(TObject *Sender);
 	void __fastcall ThumbnailsButtonClick(TObject *Sender);
 	void __fastcall About1Click(TObject *Sender);
-	void __fastcall JamFileList1AddItem(TJamFileListItem *Item, bool &CanAdd);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall StatusClick(TObject *Sender);
 	void __fastcall ClearFileListClick(TObject *Sender);
 	void __fastcall ClearSelectedFileClick(TObject *Sender);
+	void __fastcall passwordKeyChange(TObject *Sender);
+	void __fastcall bsSkinSpeedButton1Click(TObject *Sender);
+	void __fastcall passwordVerifyKeyChange(TObject *Sender);
+	void __fastcall ListFolderClick(TObject *Sender);
+	void __fastcall ListFilesClick(TObject *Sender);
+	void __fastcall HideGrid1Click(TObject *Sender);
+	void __fastcall JamFileList1AddPath(UnicodeString Path, bool &CanAdd);
+	void __fastcall JamFileList1AddItem(TJamFileListItem *Item, bool &CanAdd);
+
+	void __fastcall PngButtonVerifyKey_Wrong();          // PngButtonVerifyKey
+	void __fastcall PngButtonVerifyKey_Enable();
+	void __fastcall PngButtonVerifyKey_Disable();
 
 private:	// User declarations
 public:		// User declarations
