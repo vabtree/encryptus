@@ -33,6 +33,8 @@
 #include "se_controls.hpp"
 #include "se_pngimagelist.hpp"
 #include "aboutus_main.h"
+#include "ipcezcrypt.h"
+#include "ipzzip.h"
 
 
 //---------------------------------------------------------------------------
@@ -40,13 +42,22 @@
 extern UnicodeString EmptyString;
 extern UnicodeString Key;
 extern UnicodeString VerifyKey;
-extern bool crossCheck;
+extern UnicodeString totalcountmsg;
+
 extern  int countofitem;					// a counter in long run
-extern String totalcountmsg;
 extern  int totalfilecount;
 extern  int totalfoldercount;
+extern int algo_type;
 
-
+extern bool crossCheck;
+extern bool compressionEvaluated;
+extern bool compressionSet;
+extern bool allProgressEvaluated;
+extern bool algorithmSet;
+extern bool firstTimeInitialize;
+extern bool ENCRYPT_COMP;
+extern bool saveProgressState;
+extern bool updateAllProgressbar_Position;
 
 extern TJamShellListItem *Items;
 extern TJamFileListItems *itms;
@@ -97,11 +108,9 @@ __published:	// IDE-managed Components
 	TbsSkinPanel *bsSkinPanel2;
 	TbsSkinPasswordEdit *passwordKey;
 	TbsSkinPasswordEdit *passwordVerifyKey;
-	TbsPngImageList *bsPngImageList1;
-	TbsSkinMessage *StatusInfo;
+	TbsSkinMessage *msg;
 	TbsSkinTextLabel *bsSkinTextLabel1;
 	TbsSkinTextLabel *bsSkinTextLabel2;
-	TspSkinDBComboBox *spSkinDBComboBox1;
 	TbsSkinButton *ClearFileList;
 	TbsSkinButton *ClearSelectedFile;
 	TMenuItem *View1;
@@ -110,7 +119,14 @@ __published:	// IDE-managed Components
 	TsePngImageList *PngImageVerifyKey;
 	TsePngXButton *PngButtonVerifyKey;
 	TbsSkinButton *TotalItems;
-	TbsSkinButton *spawn;
+	TbsSkinButton *Encrypt;
+	TsePngXButton *btnCompress;
+	TsePngImageList *pngbtnCompress;
+	TsePngImageList *sePngImageList1;
+	TipcEzCrypt *Crypto;
+	TbsSkinComboBox *comboboxAlgorithms;
+	TbsSkinButton *Decrypt;
+	TipzZip *Zip1;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
@@ -136,10 +152,18 @@ __published:	// IDE-managed Components
 	void __fastcall PngButtonVerifyKey_Enable();
 	void __fastcall PngButtonVerifyKey_Disable();
 	void __fastcall TotalItemsClick(TObject *Sender);
-	void __fastcall spawnClick(TObject *Sender);
+	void __fastcall EncryptClick(TObject *Sender);
 	System::UnicodeString __fastcall GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension);
 	System::UnicodeString __fastcall RemoveFileExtension(UnicodeString InputFileName, UnicodeString Extension);
 	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall btnCompressClick(TObject *Sender);
+	void __fastcall buttonDisable();
+	void __fastcall buttonEnable();
+	void __fastcall comboboxAlgorithmsChange(TObject *Sender);
+	void __fastcall CryptoProgress(TObject *Sender, TipcEzCryptProgressEventParams *e);
+	void __fastcall Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e);
+
+
 
 private:	// User declarations
 public:		// User declarations

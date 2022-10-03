@@ -5,7 +5,7 @@ object Form2: TForm2
   BorderStyle = bsToolWindow
   Caption = 'Form2'
   ClientHeight = 384
-  ClientWidth = 709
+  ClientWidth = 694
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,14 +15,14 @@ object Form2: TForm2
   OldCreateOrder = False
   Position = poMainFormCenter
   Scaled = False
-  OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
+  OnActivate = FormActivate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object bsSkinPanel1: TbsSkinPanel
     Left = 0
     Top = 0
-    Width = 709
+    Width = 694
     Height = 384
     HintImageIndex = 0
     TabOrder = 0
@@ -57,7 +57,7 @@ object Form2: TForm2
     object bsSkinSplitter1: TbsSkinSplitter
       Left = 1
       Top = 268
-      Width = 707
+      Width = 692
       Height = 5
       Cursor = crVSplit
       Align = alTop
@@ -67,24 +67,17 @@ object Form2: TForm2
       ExplicitTop = 220
       ExplicitWidth = 683
     end
-    object Label1: TLabel
-      Left = 40
-      Top = 342
-      Width = 31
-      Height = 13
-      Caption = 'Label1'
-    end
     object Memo: TbsSkinMemo
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 701
+      Width = 686
       Height = 261
       Align = alTop
       BevelOuter = bvRaised
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = 13
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -108,7 +101,7 @@ object Form2: TForm2
       AlignWithMargins = True
       Left = 4
       Top = 280
-      Width = 701
+      Width = 686
       Height = 20
       Margins.Bottom = 5
       HintImageIndex = 0
@@ -132,16 +125,18 @@ object Form2: TForm2
       Vertical = False
       ProgressAnimationPause = 500
       Align = alBottom
+      ExplicitLeft = 5
     end
-    object bsSkinGauge1: TbsSkinGauge
+    object allProgress: TbsSkinGauge
       AlignWithMargins = True
       Left = 4
       Top = 308
-      Width = 701
+      Width = 686
       Height = 20
       Margins.Bottom = 55
       HintImageIndex = 0
       TabOrder = 2
+      SkinData = Form1.SkinData
       SkinDataName = 'gauge'
       DefaultFont.Charset = DEFAULT_CHARSET
       DefaultFont.Color = clWindowText
@@ -160,10 +155,11 @@ object Form2: TForm2
       Vertical = False
       ProgressAnimationPause = 1000
       Align = alBottom
+      ExplicitLeft = 5
     end
     object Close__: TbsSkinButton
-      Left = 605
-      Top = 334
+      Left = 598
+      Top = 336
       Width = 83
       Height = 33
       HintImageIndex = 0
@@ -305,11 +301,17 @@ object Form2: TForm2
     Left = 640
     Top = 128
   end
-  object Timer: TTimer
+  object Timer1: TTimer
     Enabled = False
-    Interval = 200
-    OnTimer = TimerTimer
-    Left = 344
-    Top = 192
+    Interval = 900
+    OnTimer = Timer1Timer
+    Left = 464
+    Top = 336
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 900
+    Left = 520
+    Top = 336
   end
 end

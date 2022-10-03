@@ -27,6 +27,8 @@
 #pragma link "SkinExCtrls"
 #pragma link "se_controls"
 #pragma link "se_pngimagelist"
+#pragma link "ipcezcrypt"
+#pragma link "ipzzip"
 #pragma resource "*.dfm"
 #include "encrypt.h"
 
@@ -41,13 +43,25 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 UnicodeString EmptyString = "";
 UnicodeString Key = "";
 UnicodeString VerifyKey = "";
-String totalcountmsg = "total count: ";
+UnicodeString totalcountmsg = "total count: ";
 
- int totalfilecount = 0;
- int totalfoldercount = 0;
- int countofitem = 0;					// a counter in long run
+int totalfilecount = 0;
+int totalfoldercount = 0;
+int countofitem = 0;
+int algo_type;							// a counter in long run
+
+static int saveAllProgressBar = 0;
 
 bool crossCheck = false;
+bool compressionSet = false;
+bool compressionEvaluated = false;
+bool allProgressEvaluated = false;
+bool algorithmSet = false;
+bool firstTimeInitialize = false;
+bool ENCRYPT_COMP = true;
+bool saveProgressState = true;
+bool updateAllProgressbar_Position = false;
+
 TJamShellListItem *Items;
 TJamFileListItems *itms;
 TJamFileListItem *itm;
@@ -163,7 +177,8 @@ void __fastcall TForm1::About1Click(TObject *Sender)
 
 void __fastcall TForm1::ClearFileListClick(TObject *Sender)
 {
-		JamFileList1->Clear();														//	ifileCount = 0;
+		JamFileList1->Clear();
+		Form2->totalfilefoldercountClear();														//	ifileCount = 0;
 }
 //---------------------------------------------------------------------------
 
@@ -259,9 +274,20 @@ void __fastcall TForm1::TotalItemsClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::spawnClick(TObject *Sender)
+void __fastcall TForm1::EncryptClick(TObject *Sender)
 {
-		Form2->ShowModal();
+		int compare = CompareStr(Key, VerifyKey);     // checking up the keys
+
+		if((algorithmSet == false) && ((passwordKey->Text.IsEmpty() == true) ||(passwordVerifyKey->Text.IsEmpty() == true)))
+		msg->MessageDlg("Encryptus cannot continue.\nPlease select algorithm and fill in some keys to go.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else if(algorithmSet == false)
+		msg->MessageDlg("Please select the appropriate algorithm.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else if((passwordKey->Text.IsEmpty() == true) || (passwordVerifyKey->Text.IsEmpty() == true))
+		msg->MessageDlg("Cheating huh.\'\nPlease fill in some keys to go.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else if(compare!=0)
+		msg->MessageDlg("Keys mismatch.\nPlease provide them again.",mtInformation,TMsgDlgButtons() << mbOK  , 0);
+		else
+        Form2->ShowModal();
 }
 //---------------------------------------------------------------------------
 System::UnicodeString __fastcall TForm1::GetFileNameExtension(UnicodeString InputFileName, UnicodeString Extension){
@@ -282,6 +308,69 @@ System::UnicodeString __fastcall TForm1::RemoveFileExtension(UnicodeString Input
 void __fastcall TForm1::FormActivate(TObject *Sender)
 {
 		itms = JamFileList1->Items;
+}
+//---------------------------------------------------------------------------
+bool button = false;
+
+void __fastcall TForm1::buttonEnable()
+{
+		compressionSet = true;               // Compression is ON
+		btnCompress->ImageDonwIndex = 1;
+		btnCompress->ImageHotIndex = 1;
+		btnCompress->ImageNormalIndex = 1;
+}
+
+void __fastcall TForm1::buttonDisable()
+{
+		compressionSet = false;               // Compression is OFF
+		btnCompress->ImageDonwIndex = 0;
+		btnCompress->ImageHotIndex = 0;
+		btnCompress->ImageNormalIndex = 0;
+}
+
+
+void __fastcall TForm1::btnCompressClick(TObject *Sender)
+{
+		if(button == false)
+		{
+			button = true;
+			buttonEnable();  					// Compression is ON
+		}
+		else if(button == true)
+		{
+			button = false;
+			buttonDisable();      				// Compression is OFF
+		}
+}
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::comboboxAlgorithmsChange(TObject *Sender)
+{
+		algo_type = comboboxAlgorithms->ItemIndex;
+		algorithmSet = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::CryptoProgress(TObject *Sender, TipcEzCryptProgressEventParams *e)
+
+{
+		Form2->Progress->Value = e->PercentProcessed;
+		Form2->Progress->Update();
+		Form2->allProgress->Value = (e->PercentProcessed)/totalfilecount;
+		Form2->allProgress->Update();
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Zip1Progress(TObject *Sender, TipzZipProgressEventParams *e)
+{
+		Form2->Progress->Value = e->PercentProcessed;
+		Form2->Progress->Update();
+		Form2->allProgress->Value = e->PercentProcessed;
+		Form2->allProgress->Update();
 }
 //---------------------------------------------------------------------------
 

@@ -1,0 +1,8 @@
+-- major changes algorithmSet placed in (call Modal) EncryptClick().
+-- introducing 2 timers for Encrypt, Decrypt.
+-- introduce bool var for ENCRYPTION_COMPRESSION/DECRYPTION_DECOMPRESSION checking
+
+DONE
+
+-- finally checking keys in Encryptclick()
+-- 

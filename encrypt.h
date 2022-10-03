@@ -23,20 +23,23 @@ __published:	// IDE-managed Components
 	TbsSkinPanel *bsSkinPanel1;
 	TbsSkinGauge *Progress;
 	TbsSkinSplitter *bsSkinSplitter1;
-	TbsSkinGauge *bsSkinGauge1;
+	TbsSkinGauge *allProgress;
 	TbsSkinMessage *Message;
 	TbsSkinButton *Close__;
-	TTimer *Timer;
+	TTimer *Timer1;
 	TButton *Button1;
 	TButton *Button2;
-	TLabel *Label1;
+	TTimer *Timer2;
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
-	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Close__Click(TObject *Sender);
-	void __fastcall TimerTimer(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
-
+	int __fastcall __appendline();
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall totalfilefoldercountClear();
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall progressBarAnimation();
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm2(TComponent* Owner);

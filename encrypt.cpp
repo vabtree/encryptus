@@ -19,7 +19,32 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {
 }
+bool fanimation = false;
 
+int __fastcall TForm2::__appendline(){
+return  (Memo->Text.Length()-1);
+}
+
+void __fastcall TForm2::progressBarAnimation(){
+		if(fanimation == false){
+			Progress->StartProgressAnimation();
+			allProgress->StartProgressAnimation();
+			fanimation = true;
+		}
+		else if(fanimation == true)
+		{
+			Progress->StopProgressAnimation();
+			allProgress->StartProgressAnimation();
+			fanimation = false;
+		}
+}
+
+void __fastcall TForm2::totalfilefoldercountClear()
+{
+	totalfilecount = 0;
+	totalfoldercount = 0;
+	firstTimeInitialize = false;            // firstTimeInitialize also to be cleared off for next use
+}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::FormCloseQuery(TObject *Sender, bool &CanClose)
@@ -34,15 +59,9 @@ int value = Message->MessageDlg("Do you really want to exit the process?" ,mtCon
 //---------------------------------------------------------------------------
 
 struct stat buf;
+UnicodeString initial = "Initialising...";
+int index_append;
 
-void __fastcall TForm2::FormCreate(TObject *Sender)
-{
-        Timer->Enabled = false;
-//		gJam::itms = Form1->JamFileList1->Items;
-		Memo->Lines->Add("Initialising...");
-
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForm2::Close__Click(TObject *Sender)
 {
@@ -51,13 +70,13 @@ void __fastcall TForm2::Close__Click(TObject *Sender)
 //---------------------------------------------------------------------------
 String dir = "Directory found";
 
-void __fastcall TForm2::TimerTimer(TObject *Sender)    // to memo
+void __fastcall TForm2::Timer1Timer(TObject *Sender)    // to memo
 {
-
-		for (int i = 0; i < countofitem; i++) {
+	countofitem = itms->Count;
+	for (int i = 0; i < countofitem; i++)
+	 {
 		itm = itms->Item[i];                      // grab index
 		String filenameitem = itm->Path;
-	  //	Memo->Lines->Add(filenameitem + i);
 
 		char *txt = AnsiString(filenameitem).c_str();
 		struct stat buf;
@@ -66,34 +85,217 @@ void __fastcall TForm2::TimerTimer(TObject *Sender)    // to memo
 		{
 			if( buf.st_mode & S_IFDIR )
 			{
-				Memo->Lines->Add("got a folder: " + filenameitem);
+				++totalfoldercount;
+				//Memo->Lines->Add("got a folder: " + filenameitem);  // skinp it
 			}
 			else if( buf.st_mode & S_IFREG )
 			{
-                 Memo->Lines->Add("found file: " + filenameitem);
+				++totalfilecount;
+
+				 // Memo->Lines->Add("found file: " + filenameitem);
 			}
-}
-}
+		}
+	}
+		Memo->Lines->Add("Total ");
+
+		Memo->SelStart = __appendline();
+		Memo->SelText = countofitem;
+
+		Memo->SelText = " items added.";
+		Memo->SelStart = __appendline();
+		Memo->SelText = " Files = ";
+		Memo->SelText = totalfilecount;
+		Memo->SelText = ". Folders(to be skipped) = ";
+		Memo->SelStart = __appendline();
+		Memo->SelText = totalfoldercount;
+
+
+	if((compressionSet == true) && (compressionEvaluated == false))
+	{
+		 compressionEvaluated = true;
+		 Progress->MaxValue = Progress->MaxValue * 2;
+		 allProgress->MaxValue = allProgress->MaxValue * 2;   // jitter at moment
+//		 Memo->Lines->Add(Progress->MaxValue);
+//		 Memo->Lines->Add(allProgress->MaxValue);
+	}
+	if( allProgressEvaluated == false ){
+		 allProgressEvaluated = true;
+		 allProgress->MaxValue = allProgress->MaxValue * totalfilecount;     // lock allprogress for re-computation
+	}
+//	Memo->Lines->Add(allProgress->MaxValue);                           // looks fine
+// encryption Phase
+
+		countofitem = itms->Count;
+		for (int i = 0; i < countofitem; i++)
+		 {
+			itm = itms->Item[i];                      // grab index
+			String filenameitem = itm->Path;
+
+			char *txt = AnsiString(filenameitem).c_str();
+			struct stat buf;
+
+			if( stat(txt,&buf) == 0 )
+			{
+			UnicodeString temp_output_archive;
+				if( buf.st_mode & S_IFDIR )
+				{
+
+					 Memo->Lines->Add("File expected, got a folder at index: ");
+					 Memo->SelStart = __appendline();
+					 Memo->SelText = i;
+					 Memo->SelText = "..skipped";
+				}
+				else if( buf.st_mode & S_IFREG )
+				{
+
+					Form1->Crypto->Algorithm = (TipcEzCryptAlgorithms)algo_type;
+					Memo->Lines->Add("File: ");
+					Memo->SelStart = __appendline();
+					Memo->SelText = filenameitem;
+
+				  try{
+					  Form1->Crypto->Overwrite = True;
+					  Form1->Crypto->InputFile = filenameitem;
+					  Form1->Crypto->OutputFile = Form1->GetFileNameExtension(filenameitem,".enc");
+					  temp_output_archive =  Form1->Crypto->OutputFile ;             //
+					  Form1->Crypto->KeyPassword = Form1->passwordKey->Text;
+					  Progress->StartProgressAnimation();
+					  progressBarAnimation();
+					  Form1->Crypto->Encrypt();
+					  Memo->SelText = " encrypted.";
+
+				  }
+					catch (Exception &ipcex) {
+					  Application->ShowException(&ipcex);
+					}
+ 				   if(compressionSet == true )
+				   {
+						    Memo->Lines->Add("Now compresing file: ");
+							Form1->Zip1->Reset();
+							Form1->Zip1->ArchiveFile = Form1->GetFileNameExtension(temp_output_archive,".zip");
+                            Memo->SelStart = __appendline();
+							Memo->SelText = temp_output_archive;
+							Form1->Zip1->Compress();
+							Memo->SelText = " compressed";
+				   }
+
+				   }
+				}      // S_IFREG
+              }       // stat
+Timer1->Enabled = false;			}        // for loop
+
+		 // Close();     					// for closing if algo_type not selected
+
+//		for (int i = 0; i < countofitem; i++) {
+//		itm = itms->Item[i];                      // grab index
+//		String filenameitem = itm->Path;
+//	  //	Memo->Lines->Add(filenameitem + i);
+//
+//		char *txt = AnsiString(filenameitem).c_str();
+//		struct stat buf;
+//
+//		if( stat(txt,&buf) == 0 )
+//		{
+//			if( buf.st_mode & S_IFDIR )
+//			{
+//				Memo->Lines->Add("got a folder: " + filenameitem);
+//			}
+//			else if( buf.st_mode & S_IFREG )
+//			{
+//				 Memo->Lines->Add("found file: " + filenameitem);
+//			}
+//}
+//}
 
 		//Memo->Lines->Add(filenameitem); 			temporary off
 
-		Timer->Enabled = false;                    // timer disable
+//		Timer->Enabled = false;                    // timer disable
 		//		String filenameitem = itm->FileSize;     // gettting the filesize at index = 0
 		   //
 		//ShowMessage(filenameitem);
-}
+
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Button1Click(TObject *Sender)
 {
 
-	   Timer->Enabled = true;
+	  Timer1->Enabled = false;         //  off for a while
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Button2Click(TObject *Sender)
 {
-	  //	Label1->Caption = ItemName;
+//	countofitem = itms->Count;
+//	for (int i = 0; i < countofitem; i++)
+//	 {
+//		itm = itms->Item[i];                      // grab index
+//		String filenameitem = itm->Path;
+//
+//		char *txt = AnsiString(filenameitem).c_str();
+//		struct stat buf;
+//
+//		if( stat(txt,&buf) == 0 )
+//		{
+//			if( buf.st_mode & S_IFDIR )
+//			{
+//				++totalfoldercount;
+//				//Memo->Lines->Add("got a folder: " + filenameitem);  // skinp it
+//			}
+//			else if( buf.st_mode & S_IFREG )
+//			{
+//				++totalfilecount;
+//
+//				 // Memo->Lines->Add("found file: " + filenameitem);
+//			}
+//		}
+//	}
+//		Memo->Lines->Add("Total ");
+//
+//		Memo->SelStart = __appendline();
+//		Memo->SelText = countofitem;
+//
+//		Memo->SelText = " items added, ";
+//		Memo->SelStart = __appendline();
+//
+//		Memo->SelText = totalfilecount;
+//		Memo->SelText = " files found, ";
+//		Memo->SelStart = __appendline();
+//		Memo->SelText = totalfoldercount;
+//		Memo->SelText = " folders to be skipped.";
+//
+//	if((compressionSet == true) && (compressionEvaluated == false))
+//	{
+//		 Progress->MaxValue = Progress->MaxValue * 2;
+//		 allProgress->MaxValue = allProgress->MaxValue * 2;
+//		 compressionEvaluated = true;
+//		 Memo->Lines->Add(Progress->MaxValue);
+//		 Memo->Lines->Add(allProgress->MaxValue);
+//	}
+//	if( allProgressEvaluated == false ){
+//	allProgress->MaxValue = allProgress->MaxValue * totalfilecount;     // lock allprogress for re-computation
+//	allProgressEvaluated = true;
+//	}
+//	Memo->Lines->Add(allProgress->MaxValue);
 }
 //---------------------------------------------------------------------------
+/*
+
+*/
+void __fastcall TForm2::FormClose(TObject *Sender, TCloseAction &Action)
+{
+		totalfilefoldercountClear();
+		Memo->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::FormActivate(TObject *Sender)
+{
+        Timer1->Enabled = true;
+		Memo->Lines->Add(initial);
+		index_append = initial.Length();
+		Memo->SelStart = Memo->Text.Length()-1;
+		Memo->SelText = "....";
+}
+//---------------------------------------------------------------------------
+
 
