@@ -47,9 +47,77 @@ void __fastcall TForm1::MoveBackButtonClick(TObject *Sender)
 void __fastcall TForm1::DisplayHint(TObject *Sender)
 {
 	   // StatusBar->Hint = GetLongHint(Application->Hint);
-	   StatusBar->HintTitle = GetLongHint(Application->Hint);
+	   //StatusBar->HintTitle = GetLongHint(Application->Hint);
 }
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	Application->OnHint = DisplayHint;
 }
+void __fastcall TForm1::MoveForwardButtonClick(TObject *Sender)
+{
+		ShellTree->MoveInHistory(1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ParentButtonClick(TObject *Sender)
+{
+		ShellList->GoUp();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::NewFolderButtonClick(TObject *Sender)
+{
+        // An em,pty string will use the windows default name for a new folder
+		ShellList->CreateDir("",true);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::DeleteButtonClick(TObject *Sender)
+{
+		if(ShellList->Focused())
+		ShellList->InvokeCommandOnSelected("delete");
+		if(ShellTree->Focused())
+		ShellTree->InvokeCommandOnSelected("delete");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::PropertiesButtonClick(TObject *Sender)
+{
+		if(ShellList->Focused())
+		ShellList->InvokeCommandOnSelected("properties");
+		if(ShellTree->Focused())
+		ShellTree->InvokeCommandOnSelected("properties");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Exit1Click(TObject *Sender)
+{
+		Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::LargeIconsButtonClick(TObject *Sender)
+{
+		ShellList->ViewStyle = vsIcon;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ListButtonClick(TObject *Sender)
+{
+		ShellList->ViewStyle = vsList;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ReportButtonClick(TObject *Sender)
+{
+        ShellList->ViewStyle = vsReport;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ThumbnailsButtonClick(TObject *Sender)
+{
+		ShellList->Thumbnails = true;
+}
+//---------------------------------------------------------------------------
+

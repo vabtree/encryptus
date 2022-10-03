@@ -29,13 +29,6 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-	TMainMenu *MainMenu1;
-	TMenuItem *File1;
-	TMenuItem *Exit1;
-	TMenuItem *Help1;
-	TMenuItem *Contents1;
-	TMenuItem *About1;
-	TbsBusinessSkinForm *bsBusinessSkinForm1;
 	TbsSkinPanel *Panel_coolbar;
 	TbsSkinPanel *Panel_main;
 	TbsSkinPanel *Panel_shelltree;
@@ -64,11 +57,30 @@ __published:	// IDE-managed Components
 	TbsSkinSpeedButton *LargeIconsButton;
 	TbsSkinSpeedButton *ListButton;
 	TbsSkinSpeedButton *ReportButton;
-	TbsSkinStatusBar *StatusBar;
 	TbsSkinSpeedButton *ThumbnailsButton;
+	TbsSkinMainMenuBar *MainMenuBar;
+	TbsSkinMainMenu *MainMenu;
+	TMenuItem *File1;
+	TMenuItem *Exit1;
+	TMenuItem *Help1;
+	TMenuItem *Contents1;
+	TMenuItem *About1;
+	TbsBusinessSkinForm *BusinessSkinForm;
+	TbsCompressedStoredSkin *CompressedSkin;
+	TbsSkinData *SkinData;
 	void __fastcall MessageClick(TObject *Sender);
 	void __fastcall MoveBackButtonClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall MoveForwardButtonClick(TObject *Sender);
+	void __fastcall ParentButtonClick(TObject *Sender);
+	void __fastcall NewFolderButtonClick(TObject *Sender);
+	void __fastcall DeleteButtonClick(TObject *Sender);
+	void __fastcall PropertiesButtonClick(TObject *Sender);
+	void __fastcall Exit1Click(TObject *Sender);
+	void __fastcall LargeIconsButtonClick(TObject *Sender);
+	void __fastcall ListButtonClick(TObject *Sender);
+	void __fastcall ReportButtonClick(TObject *Sender);
+	void __fastcall ThumbnailsButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
